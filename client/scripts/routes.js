@@ -6,9 +6,9 @@ var RouteHandler = Router.RouteHandler;
 var DefaultRoute = Router.DefaultRoute;
 var Redirect = Router.DefaultRoute;
 
+import {App} from './app';
 import {Events} from './Dispatcher';
 import {logger} from './Classes/Logger';
-import {App} from './app';
 
 
 /* APP Routes handlers */
@@ -46,9 +46,6 @@ import {CompVehicles}  from './Auth/Comp/CompVehicles';
 
 // Dashboard
 import {Dashboard} from './Auth/Dashboard';
-
-// Notifications
-import {Notifications} from './Controls/Notifications/Notifications';
 
 // Company: 
 import {CompanyDetails} from './Auth/CompanyDetails';

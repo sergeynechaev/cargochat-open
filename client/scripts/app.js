@@ -1,12 +1,18 @@
 import React from 'react/addons';
+import Router from 'react-router';
+
+var Route = Router.Route;
+var RouteHandler = Router.RouteHandler;
 
 import {Api} from './api';
 import {Events} from './Dispatcher';
 import {logger} from './Classes/Logger';
+import {Notifications} from './Controls/Notifications/Notifications';
+
 import {FlexBox} from './SimpleComponents/FlexBox';
 
 
-var App = React.createClass({
+export var App = React.createClass({
 
     getInitialState () {
         return {

@@ -1,9 +1,9 @@
 import React from 'react/addons';
 import Router from 'react-router';
 
-import {Events} from './Dispatcher';
 import {logger} from './Classes/Logger';
 import {routes} from './routes';
+import {Events} from './Dispatcher';
 
 
 // Styles 
