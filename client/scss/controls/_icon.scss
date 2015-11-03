@@ -1,0 +1,9 @@
+.icon{
+    cursor: pointer;
+    fill: $icon-fill;
+    @include transition(all linear 0.25s);
+
+    &:hover {
+        fill: $icon-hover-fill;
+    }
+}

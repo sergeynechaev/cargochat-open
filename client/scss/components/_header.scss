@@ -1,0 +1,77 @@
+.page-main{
+	.header{
+		@include clearfix();
+
+		&__logo{
+			float: left;
+			width: $sidebar-width;
+			overflow: hidden;
+
+			img{
+				width: 100%;
+			}
+		}
+		&__container{
+			padding-left: $sidebar-width;
+		}
+	}
+
+	.header-menu{
+		@include flex-box();
+		@include flex-direction(row);
+		list-style: none;
+
+		&--mini-profile{
+			@include flex-direction(row-reverse);
+			padding-right: 20px;
+
+			.header-menu__item{
+				a{ padding: 20px 5px; }
+			}
+
+			.header-menu__item-photo{
+				position: relative;
+				padding: 15px 10px;
+			}
+		}
+
+
+		&__item{
+			position: relative;
+			cursor: pointer;
+			background: $header-background;
+			@include transition(background .2s linear);
+
+			&:hover{
+				background: lighten($header-background, 2%);
+			}
+
+			a{ 
+				display: block;
+				padding: 24px 20px;
+				text-decoration: none;
+				font-size: $header-size;
+				color: $gray;
+			}
+
+
+			&[data-state=active] > a{
+				color: $brand-primary;
+			}
+		}
+	}
+
+	.header-profile{
+		@include flex-box();
+		@include flex-direction(row-reverse);
+
+			img{
+				width: 45px;
+				height: 45px;
+				border-radius: 100%;
+				overflow: hidden;
+				background: $gray-light;
+			}
+
+	}	
+}

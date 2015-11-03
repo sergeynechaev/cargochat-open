@@ -1,0 +1,38 @@
+.ModalWindow {
+  &__Overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F000000,endColorstr=#7F000000);
+    zoom: 1;
+    z-index: 1000;
+    height: 100%;
+    width: 100%;
+    @include flex-box;
+    @include flex-direction(column);
+    @include align-items(center);
+    @include justify-content(center);
+
+    /* move window slightly to the top */
+    &:after {
+        content: '';
+        display: block;
+        width: 1px;
+        height: 10%;
+      }
+  }
+
+  &__Window {
+    display: block;
+    position: relative;
+    border-radius: 3px;
+    box-shadow: rgba(0, 0, 0, 0.901961) 0px 3px 20px;
+    z-index: 1100;
+    padding: 10px;
+    margin: auto;
+    background-color: white;
+  }
+}

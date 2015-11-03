@@ -1,0 +1,76 @@
+$lf-font-family: Roboto, Helvetica, Arial, sans-serif;
+$lf-margin: 8px;
+$btn-gray:#b6b6b6;//divider color
+$btn-gray-hover:#cacaca;
+$lf-border-input: solid $btn-gray 1px;
+$btn-color: #3F51B5; //primary color
+$btn-border: 1px solid $btn-color;
+$btn-color-hover: rgba(63, 81, 181, 0.8);
+$btn-border-hover: 1px solid $btn-color-hover;
+$hover-light: #c5cae9; //light primary color
+$hover-light-border: 1px solid $hover-light;
+$primary-shade: rgba(197, 202, 233, 0.4); //light primary color
+$input-bg-color: #f1f1f1; //light gray
+$lf-border-radius:2px;
+$lf-border: none;
+$lf-color: #212121; //primary text
+$icons-color: #727272; //secondary color
+$secondary-text:#727272;
+$btn-enter-color: #303f9f; //dark primary color
+$btn-enter-border: 1px solid $btn-enter-color;
+$btn-enter-color-hover: rgba (48, 63, 159, 0.8);
+$btn-enter-border-hover: 1px solid $btn-enter-color-hover;
+$search-btn-border: solid 1px $btn-enter-color;
+$login-window-color: #ffffff; //text, icons
+$table-text-head: rgba(0,0,0,0.54);
+$table-text: rgba(0,0,0,0.87);
+$error-color: #FF4081; //accent color
+$table-bg-light: #F5F5F5;
+$table-bg-hover: #EEEEEE;
+$chat-maincolor: #5677fc;
+$green: #51b53f;
+$yellow: #f4a236;
+$maroon: #b53f51;
+
+// links
+$link-color: #3F51B5; //primary color
+
+
+
+$btn-reg-color: #a19b9a;
+
+$outline: 1px solid #5d6268;
+//$outline: 1px solid #a19b9a;
+$lf-box-shadow: 0 1px 6px rgba(0,0,0,.25);
+$lf-box-shadow-btn-normal: 0px 1px 6px rgba(0,0,0,.4);
+$lf-box-shadow-btn-hover: 0px 1px 6px rgba(0,0,0,.4);
+$lf-box-shadow-panel: 1px 1px 1px rgba(0,0,0,.4);
+$menu-box-shadow: 0 3px 3px rgba(0,0,0,.25);
+$find-partner-bg-color: #d6d8da;
+$one-panel-color-hover: #f7f6f6;
+$pagin-background-color: #ffffff;
+$pagin-hover: #fee4db;
+$yandex-color-btn: #f26c4f;
+$yandex-color-btn-hover:#ebeced;
+$search-btn-border-hover: solid 1px #f37a60;
+$search-btn-hover: #f26c4f;
+
+$left-menu-color:#f5f6f6;
+$search-bg-color: #ccced1;
+$border-top-left-menu: solid 1px rgba(255, 255, 255, .2);
+$border-bottom-left-menu: solid 1px rgba(0, 0, 0, .2);
+
+
+$baseFontSize: 16;
+$baseBackground: #ececec;
+$basePanel:#C6D4E1;
+//$basePanelHover:#BDB8AD;
+$baseMenu:#ececec;
+$baseButton:#44749D;
+$baseButtonFontColor:white;
+$slideDistance: 100;
+$slideDuration: .4s;
+
+@function rem($val) {
+  @return #{$val / $baseFontSize}rem;
+}

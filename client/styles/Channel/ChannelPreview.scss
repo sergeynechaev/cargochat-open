@@ -1,0 +1,22 @@
+.channel-preview{
+	@include flex-box();
+	@include flex-direction(column);
+	@include justify-content(center);
+	width: 100%;
+
+	.channel-preview__not-found,
+	.channel-preview__flags{
+		border: 1px solid #e8e8e8;
+		padding: 40px 50px;
+		text-align: center;
+		margin: 0 auto;
+	}
+
+
+
+	.channel-preview__flags{
+		button{
+			margin: 10px;
+		}
+	}
+}

@@ -1,0 +1,208 @@
+// Badge
+
+.badge{
+	display: inline-block;
+    min-width: 10px;
+    padding: 3px 6px;
+    font-size: 12px;
+    color: $gray;
+    line-height: 1;
+    vertical-align: middle;
+    text-align: center;
+    background-color: $gray-light;
+    border-radius: 10px;
+    margin-top: -2px;
+}
+
+.badge-danger{
+	background: $brand-danger;
+	color: #fff;
+}
+
+.badge-warning{
+	background: $brand-warning;
+	color: #fff;
+}
+
+.badge-primary{
+    background: $brand-primary;
+    color: #fff;
+}
+
+.badge-success{
+	background: $brand-success;
+	color: #fff;
+}
+
+// Label
+
+.label{
+    display: inline-block;
+    border-radius: 3px;
+    padding: 0px 5px;
+    font-size: 11px;
+
+    background: $brand-default;
+}
+
+.label-primary{
+    background: $brand-primary;
+    color: #fff !important;
+}
+
+.label-success{
+    background: $brand-success;
+    color: #fff !important;
+}
+
+.label-danger{
+    background: $brand-danger;
+    color: #fff !important;
+}
+
+.label-warning{
+    background: $brand-warning;
+    color: #fff !important;
+}
+
+// Well
+
+.well{
+	min-height: 20px;
+    padding: 20px;
+    background-color: lighten($brand-default, 5%);
+    border: 1px solid $brand-default;
+    font-size: 13px;
+}
+
+.well-small{
+    padding: 9px;
+    border-radius: 2px;
+}
+
+.well-large{
+	padding: 24px;
+    border-radius: 4px;
+}
+
+// Dropdown
+
+.dropdown{
+    position: absolute;
+    right: -20px; top: auto;
+    z-index: 9100;
+
+    margin-left: -150px;
+    width: 260px;
+    padding: 6px 0;
+    background-color: #fff;
+
+    visibility: hidden;
+    opacity: 0;
+    
+    @include box-shadow(0 0 20px rgba(0, 0, 0, 0.2));
+    @include transition(opacity 0.3s 0s, visibility 0s 0.3s);
+
+    &--arrow{
+        &:before{
+            content: ''; 
+            position: absolute;
+            top: -19px; right: 20px;
+            border: 10px solid transparent;
+            border-bottom: 10px solid white;
+        }
+    }
+
+    &--open{
+        visibility: visible; 
+        opacity: 1;
+    }
+}
+
+// Menu 
+
+.menu{
+    &__item{
+        position: relative;
+        display: block;
+
+        white-space: nowrap;
+        padding: 0 30px 0 60px;
+        line-height: 37px;
+        background: transparent;
+        text-decoration: none;
+        color: $gray-dark;
+        font-weight: 400;
+        cursor: pointer;
+
+        &:hover{
+            background: $gray-muted;
+            text-decoration: none;
+            color: $gray-dark;
+        }
+
+        .icon{
+            position: absolute;
+            left: 21px; top: 50%;
+            margin-top: -9px;
+        }
+    }
+}
+
+.box-cln-nw {
+  @include flex-box;
+  @include flex-flow(column nowrap);
+}
+
+.box-cln-wr {
+  @include flex-box;
+  @include flex-flow(column wrap);
+}
+
+.box-row-nw {
+  @include flex-box;
+  @include align-items(center);
+}
+
+.box-row-wr {
+  @include flex-box;
+  @include flex-flow(row wrap);
+}
+
+/* Paddings */
+.padd-left-xl   { padding-left: 15px; }
+.padd-right-xl  { padding-right: 15px; }
+.padd-top-xl    { padding-top: 15px; }
+.padd-bottom-xl { padding-bottom: 15px; }
+
+.padd-left      { padding-left: 10px; }
+.padd-right     { padding-right: 10px; }
+.padd-top       { padding-top: 10px; }
+.padd-bottom    { padding-bottom: 10px; }
+
+.padd-left-s    { padding-left: 5px; }
+.padd-right-s   { padding-right: 5px; }
+.padd-top-s     { padding-top: 5px; }
+.padd-bottom-s  { padding-bottom: 5px; }
+
+.padd-left-xs   { padding-left: 2px; }
+.padd-right-xs  { padding-right: 2px; }
+.padd-top-xs    { padding-top: 2px; }
+.padd-bottom-xs { padding-bottom: 2px; }
+
+/* Margins */
+.marg-left      { margin-left: 10px; }
+.marg-right     { margin-right: 10px; }
+.marg-top       { margin-top: 10px; }
+.marg-bottom    { margin-bottom: 10px; }
+
+.marg-left-s    { margin-left: 5px; }
+.marg-right-s   { margin-right: 5px; }
+.marg-top-s     { margin-top: 5px; }
+.marg-bottom-s  { margin-bottom: 5px; }
+
+.marg-left-xs   { margin-left: 2px; }
+.marg-right-xs  { margin-right: 2px; }
+.marg-top-xs    { margin-top: 2px; }
+.marg-bottom-xs { margin-bottom: 2px; }
+

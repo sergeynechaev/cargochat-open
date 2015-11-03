@@ -1,0 +1,144 @@
+.PriceRequests {
+
+/* Search Form */
+    &__SearchForm {
+
+        padding: 0 20px 15px 25px;
+
+        &_InputAddress {
+            width: 352px;
+        }
+        &_InputAddress textarea {
+            min-height: inherit;
+            margin-right: 56px;
+        }
+        &_InputTextLabel {
+            width: 60px;
+        }
+        &_InputText {
+            width: 60px;
+            margin-right: 56px;
+        }
+        &_InputDateLabel {
+            width: 110px;
+        }
+        &_NotFound {
+            padding: 10px 25px;
+        }
+    }
+/* Search Form Result Header */
+    &__SearchForm_Result {
+
+        padding: 15px 0;
+
+        &_Label {
+            padding-left: 25px;
+        }
+        &_Value, &_Value span {
+            font-size: 15px;
+            font-weight: 400;
+            color: $link-color;
+            padding-left: 10px;
+        }
+    }
+
+/* Buttons */
+    &__Button_CreateNew {
+    	padding-left: 40px;
+    	margin-bottom: 4px;
+    }
+
+/* PriceRequests__Card */
+    &__Card {
+
+        padding: 0 0 15px 0;
+
+        &_bets, &_bets_zero {
+            margin: 2px 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            display: inline-flex;
+            @include align-items(center);
+            @include justify-content(center);
+        }
+        &_bets {
+            background-color: rgba(63, 81, 181, 0.8);
+            color: #fff;
+        }
+        &_bets_zero {
+            background-color: rgba(197, 202, 233, 0.4);
+            color: #000;
+        }
+        &_header {
+            padding: 12px 0;
+        }
+        &_title {
+            padding-left: 15px;
+        }
+        &_title span {
+            font-size: 16px;
+            font-weight: 400;
+            color: $link-color;
+        }
+        &_actions {
+            @include flex-box;
+            padding: 12px 0;
+        }
+        &_address {
+            padding: 0 0 15px 15px;
+        }
+        &_address-created {
+            padding: 0 0 15px 40px;
+        }
+        &_footer {
+           @include flex-box;
+            padding: 0 0 4px 15px;
+        }
+        &_footer-created {
+            @include flex-box;
+             padding: 0 0 4px 40px;
+        }
+        &_ctime {
+            font-size: 10px;
+            color: #333;
+        }
+        &_cargo, &_cargo span {
+            font-weight: 400;
+        }
+        &_Button_CreateBet {
+            font-size: 13px !important;
+            padding: 1px 8px 0 0 !important;
+        }
+        &_bet {
+            background-color: rgba(63, 81, 181, 0.8);
+            color: #fff;
+            border-radius: 5px;
+            padding: 2px 5px;
+            margin-right: 8px;
+        }
+
+    }
+}
+
+.PriceRequestsView {
+    &__Card {
+        padding: 15px 20px;
+
+        &_badge {
+            margin: 2px 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 100%;
+            display: inline-flex;
+            @include align-items(center);
+            @include justify-content(center);
+            background-color: rgba(197, 202, 233, 0.4);
+            color: #000;
+        }
+        &_badge span {
+            font-size: 12px;
+        }
+
+    }
+}

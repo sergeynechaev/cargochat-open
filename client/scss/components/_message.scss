@@ -1,0 +1,115 @@
+/* Message */
+
+.message {
+	margin: 10px 0 20px 0;
+	@include flex-box();
+	@include flex-direction(column);
+	@include flex-wrap(nowrap);
+	@include align-items(flex-start);
+
+	&__info {
+		@include flex-box();
+		@include flex-direction(row);
+		@include flex-wrap(nowrap);
+		@include justify-content(space-between);
+		@include align-items(center);
+		width: 400px;
+		max-width: 400px;
+	}
+	&__user {
+		font-size: $font-size-h4;
+		color: $gray-dark;
+		margin: 5px 0 10px 0;
+		text-align: left;
+		@include flex-grow(5);
+	}
+	&__actions {
+		
+	}
+	&__time {
+		padding: 0 0 0 10px;
+	}
+	&__body {
+		@include flex-box();
+		@include flex-direction(row);
+		@include flex-wrap(nowrap);
+		@include align-items(center);
+	}
+	&__body-action {
+		padding-right: 10px;
+	}
+	&__body-text {
+		position: relative;
+		background-color: $color-message;
+		@include border-radius(6px);
+		padding: 10px 20px;
+		word-wrap: break-word;
+		width: 400px;
+		max-width: 400px;
+
+		&:before{
+			content: '';
+			position: absolute;
+			top: -16px; left: 15px;
+			border: 8px solid transparent;
+			border-bottom: 8px solid $color-message;
+		}
+	}
+	&__date {
+		text-align: center;
+		font-style: italic;
+		font-size: 12px;
+		&:before, &:after{
+			content: '';
+		    border-bottom: 1px solid $brand-primary;
+		    display: inline-block;
+		    width: 100px;
+		    position: relative;
+		}
+		&:before, &:after{
+		    top: -4px;
+		    right: 10px;
+		}
+		&:after{
+		    top: -4px;
+		    left: 10px;
+		}
+	}
+
+	/* My message */
+	&[data-state=my] {
+		@include align-items(flex-end);
+		.message {
+			&__user { 
+				@include order(3);
+				text-align: right;
+			}
+			&__actions { @include order(2); }
+			&__time {
+				padding: 0 10px 0 0;
+				@include order(1);
+			}
+			&__body-text {
+				background-color: $color-message-my;
+				text-align: right;
+				&:before{
+					border-bottom-color: $color-message-my;
+					left: auto;
+					right: 15px;
+				}
+			}
+		}
+	}
+
+	/* Unreaded */
+	&[data-readed=false] {
+		.message {
+			&__user { 
+				color: $brand-primary;
+			}
+			&__body {
+				font-weight: $font-weight-strong;
+			}
+		}
+	}
+}

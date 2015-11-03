@@ -1,0 +1,52 @@
+.btn{
+	border-radius: $btn-border-radius;
+	font-size: $btn-font-size;
+	padding: $btn-padding;
+	color: $gray;
+	background: $brand-default;
+	cursor: pointer;
+	outline: none;
+	border: 0;
+	white-space: nowrap;
+
+	&[disabled]{
+	    background-color: #f3f7f9;
+	    color: #a3afb7;
+
+	    &:hover{
+			background-color: #f3f7f9;
+			color: #a3afb7;	    	
+	    }
+
+	    &:active{
+			background-color: #f3f7f9;
+			color: #a3afb7;	    	
+	    }
+	}
+
+	@include transition(all .2s ease-in-out);
+}
+
+.btn-icon{
+	svg{ margin-bottom: -8px; }
+}
+
+.btn-small{
+	padding: $btn-small-padding;
+}
+
+.btn-primary{
+	@include btn($brand-primary, #fff);
+}
+
+.btn-success{
+	@include btn($brand-success, #fff);
+}
+
+.btn-danger{
+	@include btn($brand-danger, #fff);
+}
+
+.btn-warning{
+	@include btn($brand-warning, #fff);
+}

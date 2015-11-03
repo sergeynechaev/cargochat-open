@@ -1,0 +1,1891 @@
+// этот файл будем постепенно рефакторить и выносить в отдельные модули
+
+// Для всех контейнеров устанавливаем размер по границе
+* {
+  box-sizing: border-box;
+  font-family: $lf-font-family;
+  font-weight: 300;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: $input-bg-color;
+  min-height: 100%;
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-thumb {
+    border-width: 1px 1px 1px 2px;
+    border-color: $secondary-text;
+    background-color: $btn-gray;
+    height: 24px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    //    border-width: 1px 1px 1px 2px;
+    border-color: $table-text-head;
+    background-color: $table-text-head;
+  }
+  ::-webkit-scrollbar-track {
+    border-width: 0;
+    background-color: $login-window-color;
+  }
+  ::-webkit-scrollbar-track:hover {
+    border-left: solid 1px $btn-gray;
+    background-color: $table-bg-hover;
+  }
+}
+
+.systemIsDown {
+  &__Container {
+    height: 100%;
+  }
+  &__Message {
+    background-color: #fff;
+    padding: 50px 40px;
+    border: 1px solid $link-color;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    &_Tries {
+      font-size: 11px;
+      color: #777;
+      padding-top: 35px;
+    }
+    &_Tries_Counter {
+      font-weight: 400;
+    }
+  }
+}
+
+.main-window {
+  width: 1280px;
+  //height: 960px;
+}
+
+input, button {
+  outline: none;
+}
+
+.hidden-all {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: $btn-color;
+  &:active {
+    color: $btn-color;
+  }
+}
+
+h1, h2, h3, h4, p {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  //list-style: none;
+  margin: 0;
+  padding-left: 10px;
+}
+
+.active {
+  transition: all linear 0.25s;
+  & > h4 {
+    color: $error-color;
+  }
+  &:hover {
+    background-color: $primary-shade;
+    & > h4 {
+      color: $btn-color;
+    }
+  }
+}
+
+//Все рендерится в App
+#app {
+  @include flex-box;
+  @include flex-flow(row wrap);
+  @include align-items(stretch);
+  width: 100%;
+  height: 100%;
+}
+
+//Разметка
+.box-cln-nw {
+  @include flex-box;
+  @include flex-flow(column nowrap);
+}
+
+.box-cln-wr {
+  @include flex-box;
+  @include flex-flow(column wrap);
+}
+
+.box-row-nw {
+  @include flex-box;
+}
+
+.box-row-wr {
+  @include flex-box;
+  @include flex-flow(row wrap);
+}
+
+.just-btw {
+  @include justify-content(space-between);
+}
+
+.just-around {
+  @include justify-content(space-around);
+}
+
+.just-end {
+  @include justify-content(flex-end);
+}
+
+.just-center {
+  @include justify-content(center);
+}
+
+.align-center {
+  @include align-items(center);
+}
+
+.align-stretch {
+  @include align-items(stretch);
+}
+
+.align-start {
+  @include align-items(flex-start);
+}
+
+.align-end {
+  @include align-items(flex-end);
+}
+
+.align-cont-center {
+  @include align-content(center);
+}
+
+.align-cont-around {
+  @include align-content(space-around);
+}
+
+.align-s-center {
+  @include align-self(center);
+}
+
+.align-s-start {
+  @include align-self(flex-start);
+}
+
+.align-s-end {
+  @include align-self(flex-end);
+}
+
+//карта, список
+.card-box {
+  flex: 1 0 auto;
+  height: auto;
+  background-color: $login-window-color;
+  box-shadow: $lf-box-shadow-btn-normal;
+  border-radius: 2px;
+}
+
+.card-p {
+  line-height: 1.5em;
+  font-size: 14px;
+  color: $table-text;
+  padding: 0 16px 24px 16px;
+}
+
+.settings-p {
+  line-height: 1.5em;
+  font-size: 14px;
+  color: $table-text;
+  vertical-align: bottom;
+  ul {
+    margin-left: 20px;
+    padding: 0;
+  }
+
+  li {
+    list-style: circle;
+    margin: 5px;
+    padding-left: 10px;
+  }
+}
+
+.card-h3 {
+  font-size: 24px;
+  padding: 24px 16px 0 16px;
+  font-weight: 400;
+  color: $table-text;
+}
+
+.card-sub {
+  font-size: 14px;
+  line-height: 16px;
+  word-wrap: break-word;
+  height: auto;
+  max-width: 400px;
+  font-weight: 400;
+  color: $table-text;
+}
+
+.card-disab {
+  color: $table-text-head;
+}
+
+.list-box {
+  flex: 1 0 auto;
+  height: auto;
+}
+
+.list-h3 {
+  font-size: 20px;
+  vertical-align: middle;
+  font-weight: 400;
+  color: $table-text;
+  word-wrap: break-word;
+  padding-bottom: 12px;
+}
+
+.divider {
+  margin-bottom: 8px;
+}
+
+.divider-sm {
+  margin-bottom: 4px;
+}
+
+.icon-list {
+  padding: 0 8px 0 0;
+  margin-left: -4px;
+}
+
+.p-list {
+  line-height: 24px;
+  font-size: 14px;
+  vertical-align: middle;
+  color: $table-text;
+}
+
+.padd-user {
+  padding-top: 4px;
+}
+
+.icon-header {
+  padding: 2px 2px 2px 3px;
+  height: 32px;
+  width: 32px;
+}
+
+.padd-standart {
+  padding: 24px;
+}
+
+.padd-icon {
+  padding: 2px 16px 0 0;
+}
+
+.padd-icon-mod {
+  padding: 8px 16px 0 0;
+}
+
+.padd-top-card {
+  padding-top: 8px;
+  border-top: 1px solid $primary-shade;
+}
+
+.border-btm {
+  border-bottom: 1px solid $primary-shade;
+}
+
+.border-left {
+  border-left: 1px solid $primary-shade;
+}
+
+.border-right {
+  border-right: 1px solid $primary-shade;
+}
+
+.icon-color {
+  fill: $btn-color;
+}
+
+.icon-shift {
+  margin-left: -4px;
+}
+
+.icon-color-active {
+  &:hover {
+    fill: $error-color;
+  }
+  &:active {
+    fill: $error-color;
+  }
+}
+
+.text-card {
+  color: $btn-color;
+  font-weight: 400;
+}
+
+.text-under {
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.photo-box {
+  width: 100%;
+  height: 150px;
+  border-bottom: 1px solid $primary-shade;
+  background-color: $login-window-color;
+}
+
+.social-box {
+  width: 100%;
+  height: 90px;
+  border-bottom: 1px solid $primary-shade;
+  background-color: $login-window-color;
+}
+
+.icon-social-box {
+  //padding: 24px 0;
+  width: 100%;
+  height: 90px;
+  fill: $primary-shade;
+}
+
+.icon-photo-box {
+  //padding: 24px 0;
+  width: 100%;
+  height: 150px;
+  fill: $primary-shade;
+}
+
+.profile-label {
+  width: 91px;
+}
+
+.logo-box {
+  width: 150px;
+  height: 150px;
+  background-color: $login-window-color;
+}
+
+.icon-logo-box {
+  //padding: 24px 0;
+  width: 100%;
+  height: 150px;
+  fill: $primary-shade;
+}
+
+.inmap {
+  position: fixed;
+  z-index: 90;
+}
+
+.map-controls {
+  z-index: 2001;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+.simple-table {
+  border-top: 1px solid $primary-shade;
+  padding-left: 0;
+  padding-right: 0;
+  width: 410px;
+}
+
+//ID
+#left-menu-wrap {
+  flex: 0 0 220px;
+  min-height: 900px;
+  padding-top: 60px;
+}
+
+#bg-main {
+  flex: 1 0 auto;
+  /*min-height: 900px;*/
+  padding-top: 60px;
+}
+
+//#header{
+//  background-color: $btn-color;
+//  width: 1280px;
+//  padding-left: 24px;
+//  padding-right: 24px;
+//}
+//.fixed{
+//  width: 100%;
+//  height: 50px;
+//  position: fixed;
+//  top: 0;
+//  z-index: 100;
+//}
+//.fixed-left-menu{
+//  height: 100%;
+//  width: 256px;
+//  position: fixed;
+//  top: 60px;
+//  z-index: 100;
+//}
+
+.logo-size {
+  max-width: 120px;
+  max-height: 120px;
+  margin: 0 236px;
+}
+.max-table{
+  max-width: 1050px;
+}
+
+.sm-header {
+  height: 50px;
+  width: 1050px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.sm-header-a {
+  line-height: 24px;
+  vertical-align: middle;
+  color: $btn-color;
+  &:hover {
+    text-decoration: none;
+    color: $error-color;
+  }
+  &:active {
+    color: $error-color;
+    text-decoration: none;
+  }
+}
+
+.footer-a {
+  line-height: 20px;
+  vertical-align: middle;
+  color: $btn-color;
+  font-size: 14px;
+  font-weight: 500;
+  &:hover {
+    color: $error-color;
+  }
+  &:active {
+    color: $error-color;
+  }
+}
+.footer-a-green {
+  line-height: 20px;
+  padding-top: 1px;
+  color: $green;
+  font-size: 14px;
+  font-weight: 500;
+  &:hover {
+    color: $error-color;
+  }
+  &:active {
+    color: $error-color;
+  }
+}
+.footer-a-yellow {
+  line-height: 20px;
+  padding-top: 1px;
+  color: $yellow;
+  font-size: 14px;
+  font-weight: 500;
+  &:hover {
+    color: $error-color;
+  }
+  &:active {
+    color: $error-color;
+  }
+}
+.footer-a-blue {
+  line-height: 20px;
+  padding-top: 1px;
+  color: $chat-maincolor;
+  font-size: 14px;
+  font-weight: 500;
+  &:hover {
+    color: $error-color;
+  }
+  &:active {
+    color: $error-color;
+  }
+}
+.footer-a-black {
+  line-height: 20px;
+  padding-top: 1px;
+  color: $lf-color;
+  font-size: 14px;
+  font-weight: 500;
+  &:hover {
+    color: $error-color;
+  }
+  &:active {
+    color: $error-color;
+  }
+}
+
+.footer-a-div {
+  margin: 16px 0;
+  cursor: pointer;
+  .icon-stand {
+    fill: $btn-color;
+    margin-right: 4px;
+  }
+  .icon-green {
+    fill: $green;
+    margin-right: 4px;
+  }
+  .icon-yellow {
+    fill: $yellow;
+    margin-right: 4px;
+  }
+  .icon-blue {
+    fill: $chat-maincolor;
+    margin-right: 4px;
+  }
+  .icon-black {
+    fill: $lf-color;
+    margin-right: 4px;
+  }
+  &:hover {
+    .icon-stand {
+      fill: $error-color;
+    }
+    .icon-green {
+      fill: $error-color;
+    }
+    .icon-yellow {
+      fill: $error-color;
+    }
+    .icon-blue {
+      fill: $error-color;
+    }
+    .icon-black {
+      fill: $error-color;
+    }
+    .footer-a {
+      color: $error-color;
+    }
+  }
+  &:active {
+    .icon-stand {
+      fill: $error-color;
+    }
+    .footer-a {
+      color: $error-color;
+    }
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.sm-header-bord {
+  height: 24px;
+  border-right: 1px solid $primary-shade;
+}
+
+.conn-header {
+  height: 50px;
+  width: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.col-default {
+  flex: 0 0 410px;
+}
+
+.col-big {
+  flex: 0 0 550px;
+}
+
+.col-large {
+  flex: 0 0 auto;
+}
+
+.div-const {
+  flex: 0 0 48px;
+}
+
+.max-size {
+  flex: 1 0 auto;
+}
+
+.default-width {
+  min-width: 410px;
+}
+
+.table-footer {
+  height: 56px;
+  border-top: 1px solid $primary-shade;
+}
+
+.table-footer-big {
+  height: auto;
+  border-top: 1px solid $primary-shade;
+}
+
+.footer-style {
+  color: $table-text-head;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  vertical-align: top;
+}
+
+.select {
+  color: $table-text-head;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 24px;
+  vertical-align: middle;
+  //  word-wrap: break-word;
+  text-align: right;
+  overflow: hidden;
+}
+
+.select-list {
+  position: absolute;
+  box-shadow: $lf-box-shadow-btn-normal;
+  max-height: 125px;
+  overflow-y: auto;
+  background-color: white;
+  //width: 60px;
+  padding-right: 8px;
+  z-index: 2;
+}
+
+.select-item {
+  text-align: left;
+  font-weight: 500;
+  padding: 0 4px 0 4px;
+
+  border-bottom: 1px solid $table-bg-light;
+  background-color: $login-window-color;
+  &:hover {
+    background-color: $table-bg-light;
+    color: $btn-color;
+    transition: all linear 0.25s;
+  }
+}
+
+.selected {
+  height: 24px;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0 16px 0 8px;
+  &:hover {
+    background-color: $table-bg-light;
+    color: $btn-color;
+    transition: all linear 0.25s;
+  }
+  & p {
+    font-weight: 500;
+    transition: all linear 0.25s;
+  }
+}
+
+.selected-ms {
+  //height: 24px;
+  font-size: 14px;
+  //line-height: 24px;
+  padding: 0 3px 0 3px;
+  &:hover {
+    background-color: $table-bg-light;
+    color: $btn-color;
+    transition: all linear 0.25s;
+  }
+  & p {
+    font-weight: 500;
+    transition: all linear 0.25s;
+  }
+}
+
+.icon-dark {
+  cursor: pointer;
+  fill: $table-text-head;
+  &:hover {
+    fill: $btn-color;
+    transition: all linear 0.25s;
+    background-color: transparent;
+  }
+  &:active {
+    fill: $hover-light;
+    transition: all linear 0.25s;
+  }
+}
+
+.icon-light {
+  cursor: pointer;
+  fill: #fff;
+  &:hover {
+    fill: $yellow;
+    transition: all linear 0.25s;
+    background-color: transparent;
+  }
+  &:active {
+    fill: $hover-light;
+    transition: all linear 0.25s;
+  }
+}
+
+.icon-simple {
+  cursor: inherit;
+  fill: $table-text-head;
+}
+
+.border {
+  border-top: 1px solid $primary-shade;
+}
+
+// Панели и цвета элементов панелей
+.panel-default {
+  background-color: $login-window-color;
+  color: $lf-color;
+}
+
+.panel-sub {
+  background-color: $table-bg-light;
+  color: $lf-color;
+}
+
+.panel {
+  border-radius: $lf-border-radius;
+  box-shadow: $lf-box-shadow;
+  margin-bottom: 10px;
+}
+
+.panel-heading {
+  background-color: $primary-shade;
+  color: $btn-color;
+}
+
+.panel-heading-grey {
+  background-color: $table-bg-hover;
+  color: $btn-color;
+}
+
+.light-gray-bg {
+  color: $lf-color;
+  background-color: $input-bg-color;
+}
+
+.menu-item {
+  padding: 16px 24px 16px 24px;
+  line-height: 18px;
+  font-size: 16px;
+
+  .menu-icon {
+    fill: $btn-color;
+  }
+  .active-icon {
+    fill: $error-color;
+  }
+
+  h4 {
+    font-weight: 500;
+  }
+  &:hover {
+    transition: all linear 0.25s;
+    background-color: $primary-shade;
+    .menu-icon {
+      transition: all linear 0.25s;
+      fill: $btn-color;
+    }
+  }
+}
+
+.addressList {
+  position: absolute;
+  z-index: 200;
+  width: 338px;
+  margin-left: 114px;
+  cursor: pointer;
+  box-shadow: $lf-box-shadow-btn-normal;
+  > :nth-child(odd) {
+    background-color: $table-bg-light;
+    &:hover {
+      background-color: $hover-light;
+    }
+  }
+  > :nth-child(even) {
+    background-color: $table-bg-light;
+    &:hover {
+      background-color: $hover-light;
+    }
+  }
+}
+
+.addressListItem {
+  position: relative;
+  display: inline;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  font-size: 13px;
+  padding: 8px;
+  border-bottom: 1px solid $primary-shade;
+  &:hover {
+    transition: all linear 0.25s;
+    background-color: $primary-shade;
+  }
+}
+
+textarea {
+  outline: none;
+  resize: none;
+}
+
+.note {
+  position: relative;
+  cursor: help;
+  .note-text{
+    position: absolute;
+    top: 20px;
+    z-index: 10000;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 3px;
+    img {
+      max-width: 300px;
+    }
+  }
+}
+
+.text-area {
+  font-size: 16px;
+  min-height: 70px;
+  vertical-align: bottom;
+}
+
+
+
+//Кнопки. Отступы сверху/снизу, между кнопками 8px. марджин топ от верхнего дива и кнопками 24рх
+.button {
+  box-shadow: $lf-box-shadow-btn-normal;
+  border-radius: 1px;
+  font-size: 14px;
+  height: 36px;
+  line-height: 36px;
+  width: 256px;
+  color: $lf-color;
+  cursor: pointer;
+  border: none;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  padding-left: 16px;
+  padding-right: 16px;
+  font-weight: bold;
+  &:hover {
+    //    box-shadow:$lf-box-shadow-btn-hover;
+    box-shadow: rgba(0, 0, 0, 0.3) 0 4px 4px 0
+  }
+  &:focus {
+    -moz-appearance: none;
+    border: none;
+  }
+}
+
+.button-mini {
+  min-width: 64px;
+  width: 100%;
+}
+
+.button-transparent {
+  box-shadow: none;
+  font-weight: bold;
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: $login-window-color;
+  &:hover {
+    background-color: $primary-shade;
+    color: $login-window-color;
+    box-shadow: none;
+  }
+}
+
+.button-submit {
+  background-color: $btn-color;
+  color: $login-window-color;
+  &:hover {
+    background-color: $btn-color-hover;
+  }
+}
+
+.button-unborder {
+  background-color: $login-window-color;
+  width: auto;
+  outline: none;
+  border: none;
+  color: $btn-color;
+  font-weight: bold;
+  box-shadow: none;
+  &:hover {
+    box-shadow: none;
+    background-color: $primary-shade;
+  }
+}
+
+//.button-list{
+//  color: $btn-color;
+//  background-color: transparent;
+//  font-weight: bold;
+//  box-shadow: none;
+//  text-transform: none;
+//  &:hover{
+//    box-shadow: none;
+//    background-color: $primary-shade;
+//  }
+//}
+
+//Анимирование таблицы
+
+.button-span {
+  float: left;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.ink {
+  display: block;
+  position: absolute;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 100%;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+}
+
+.animate {
+  -webkit-animation: ripple 0.65s linear;
+  -moz-animation: ripple 0.65s linear;
+  -ms-animation: ripple 0.65s linear;
+  -o-animation: ripple 0.65s linear;
+  animation: ripple 0.65s linear;
+}
+
+@-webkit-keyframes ripple {
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(2.5);
+  }
+}
+
+@-moz-keyframes ripple {
+  100% {
+    opacity: 0;
+    -moz-transform: scale(2.5);
+  }
+}
+
+@-o-keyframes ripple {
+  100% {
+    opacity: 0;
+    -o-transform: scale(2.5);
+  }
+}
+
+@keyframes ripple {
+  100% {
+    opacity: 0;
+    transform: scale(2.5);
+  }
+}
+
+//Таблицы
+.table {
+  width: 100%;
+  font-size: 14px;
+  color: $table-text;
+  border-collapse: collapse;
+  > thead {
+    > tr {
+      height: 40px;
+      border-bottom: 1px solid $primary-shade;
+    }
+  }
+  > tbody {
+    > tr {
+      > td {
+        height: 40px;
+      }
+      &:hover {
+        background-color: $table-bg-hover;
+      }
+    }
+    > tr:nth-child(odd) {
+      background-color: $table-bg-light;
+      &:hover {
+        background-color: $table-bg-hover;
+      }
+    }
+  }
+}
+
+.tbl-width {
+  width: 100%;
+  max-width: 100%;
+}
+
+.table-nohead {
+  width: 100%;
+  max-width: 100%;
+  padding: 8px 0 8px 0;
+  font-size: 14px;
+  color: $table-text;
+  border-collapse: collapse;
+  > thead {
+    background-color: $primary-shade;
+    > tr {
+    }
+  }
+  > tbody {
+    > tr {
+      > td {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        height: 40px;
+      }
+      //&:hover{
+      //  background-color: $table-bg-hover;
+      //}
+    }
+    > tr {
+      border-bottom: 1px solid $primary-shade;
+      //background-color: $table-bg-light;
+      //  &:hover{
+      //    background-color: $table-bg-hover;
+      //  }
+    }
+  }
+}
+
+.table-pl {
+  padding-left: 24px;
+}
+
+.table-pr {
+  padding-right: 24px;
+}
+
+.pagin-pr {
+  padding-right: 14px;
+}
+
+.pagin-prs {
+  padding-right: 8px;
+}
+
+.pagin-pl {
+  margin-left: 24px;
+}
+
+.pagin-pls {
+  margin-left: 16px;
+}
+
+.padd-right {
+  padding-right: 16px;
+}
+
+.pagin-plb {
+  margin-left: 32px;
+}
+
+.table-prb {
+  padding-right: 56px;
+}
+
+.table-plbig {
+  padding-left: 56px;
+}
+
+.table-pb {
+  padding-bottom: 36px;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-mid {
+  vertical-align: middle;
+  height: 48px;
+}
+
+.table-head {
+  height: 56px;
+  color: $table-text-head;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.text-center {
+  text-align: center;
+}
+
+//Инпуты и лэйблы к ним, чекбоксы
+.label-width {
+  width: 60px;
+}
+
+.label-width-pad {
+  padding-right: 10px;
+  width: 60px;
+}
+
+.label-width-md {
+  width: 120px;
+}
+
+.input {
+  border-radius: $lf-border-radius;
+  border: $lf-border-input;
+  height: 36px;
+  padding-left: 3px;
+  width: 256px;
+  background-color: $input-bg-color;
+}
+
+.input-underline {
+  padding: 4px 0 8px 3px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: $lf-border-input;
+  cursor: text;
+  &:focus {
+    outline: none;
+    border-bottom: $btn-border;
+    transition: 0.15s cubic-bezier(.8, 0, 1, 1) all;
+  }
+  &:disabled {
+    border: none;
+    background-color: #ffffff;
+    padding-bottom: 9px;
+    cursor: auto;
+  }
+}
+
+.input-error {
+  padding: 16px 0 8px 3px;
+  height: 64px;
+  border-bottom: 1px solid $error-color;
+  &:focus {
+    border-bottom: 1px solid $error-color;
+  }
+}
+
+.check-box {
+  position: relative;
+  top: rem(-1);
+  margin: 0 1rem 0 0;
+  cursor: pointer;
+  &:before {
+    transition: (all .3s ease-in-out);
+    content: "";
+    position: absolute;
+    left: 0;
+    z-index: 1;
+    width: 1rem;
+    height: 1rem;
+    border: $lf-border-input;
+  }
+  &:checked {
+    &:before {
+      transform: rotate(-45deg);
+      height: .5rem;
+      border-color: $btn-color;
+      border-top-style: none;
+      border-right-style: none;
+    }
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    width: 1.1rem;
+    height: 1.1rem;
+    background: #fff;
+    cursor: pointer;
+  }
+}
+
+.label-checkbox {
+  position: relative;
+  margin: 0;
+  line-height: 135%;
+  cursor: pointer;
+}
+
+.radio {
+  flex: 0 0 auto;
+  margin-right: 30px;
+  input[type="radio"] {
+    display: inline-block;
+    position: absolute;
+    top: -1px;
+    left: -18px;
+    z-index: -10;
+    width: 80%;
+    height: 80%;
+  }
+  input[type="radio"] + label span.radioButtonGraph {
+    appearance: none;
+    z-index: 20;
+    position: absolute;
+    top: 1px;
+    left: -8px;
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    cursor: pointer;
+    vertical-align: middle;
+    box-shadow: hsla(0, 0%, 100%, .15) 0 1px 1px, inset hsla(0, 0%, 0%, .5) 0 0 0 1px;
+    background: $login-window-color;
+    background-image: radial-gradient(ellipse at center, $btn-color 0%, $btn-color 40%, #efefef 45%);
+    background-repeat: no-repeat;
+    transition: background-position .15s cubic-bezier(.8, 0, 1, 1);
+  }
+  input[type="radio"]:checked + label span.radioButtonGraph {
+    transition: background-position .2s .15s cubic-bezier(0, 0, .2, 1);
+  }
+  input[type="radio"] + label span.radioButtonGraph {
+    background-position: -24px 0;
+  }
+  input[type="radio"]:checked + label span.radioButtonGraph {
+    background-position: 0 0;
+  }
+  .radioP {
+    display: inline-block;
+    width: auto;
+    position: relative;
+    margin: 7px 0 7px 9px;
+    padding-left: 14px;
+  }
+}
+
+//цвет текста и размеры шрифта
+.main-text {
+  color: $lf-color;
+}
+
+.accent-block {
+  margin: 2px 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: $primary-shade;
+}
+
+.accent-pad {
+  padding-top: 0.5px;
+}
+
+.error {
+  color: $error-color;
+}
+
+.error-text {
+  font-size: 12px;
+  padding: 4px 0 4px 117px;
+}
+
+.label {
+  color: $table-text-head;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.label-active {
+  color: $btn-color;
+}
+
+.text-form {
+  font-size: 14px;
+  line-height: 18px;
+  color: $table-text;
+}
+
+.color-disable {
+  color: rgb(84, 84, 84)
+}
+
+.font600 {
+  font-weight: 500;
+}
+
+.font12 {
+  font-size: 12px;
+}
+
+.font13 {
+  font-size: 13px;
+}
+
+.font-sec {
+  font-size: 13px;
+}
+
+.font14 {
+  font-size: 14px;
+  word-wrap: break-word;
+}
+
+.font-title {
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.font-headline {
+  font-size: 24px;
+}
+
+.font-bold {
+  font-weight: 400;
+}
+
+//Отступы
+
+.panel-lg {
+  padding: 35px;
+}
+
+.panel-md {
+  padding: 16px 24px 16px 24px;
+}
+
+.panel-sm {
+  padding: 10px;
+}
+
+.panel-null {
+  padding: 0;
+}
+
+.panel-top-null {
+  padding-top: 0;
+}
+
+.heading {
+  margin: 10px;
+}
+
+.head-fs {
+  font-size: 1.5em;
+  & > a {
+    color: $login-window-color;
+  }
+}
+
+.message {
+  margin: $lf-margin;
+  font-size: 0.9em;
+  vertical-align: text-bottom;
+}
+
+.message-nl {
+  margin-left: 0;
+}
+
+.marg-lr {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.marg-r {
+  margin-right: 10px;
+}
+
+.marg-nl {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.marg-b {
+  margin-bottom: 10px;
+}
+
+.marg-t {
+  margin-top: 15px;
+}
+
+.marg-md {
+  margin-top: 6px;
+  margin-bottom: 2px;
+}
+
+// Paddings
+.padd-top {
+  padding-top: 10px;
+}
+
+.wrap-tb {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+//мультиселект с тэгами
+.multi-ic {
+  height: 24px;
+  padding: 3px 3px 2px 0;
+  fill: $table-text-head;
+  border-left: solid 1px $primary-shade;
+  :hover {
+    fill: $error-color;
+    background-color: $login-window-color;
+    transition: all linear 0.25s;
+  }
+}
+
+.span-size {
+  height: 24px;
+  width: 24px;
+}
+
+.marg-tags {
+  margin-right: 8px;
+}
+
+.marg-icon {
+  margin-right: 4px;
+}
+
+.multi-bord {
+  margin: 4px 4px 0 0;
+}
+
+.multi-item {
+  height: 24px;
+  font-weight: 500;
+  padding: 0 0 0 8px;
+  background-color: $login-window-color;
+  border: $hover-light-border;
+  border-radius: 4px;
+  //border-radius: $lf-border-radius;
+  //background-color: $primary-shade;
+}
+
+.selected-tags {
+  font-size: 14px;
+  //& p{
+  //  font-weight: 500;
+  //  transition: all linear 0.25s;
+  //}
+}
+
+.menu-hover {
+  :hover {
+    background-color: $primary-shade;
+  }
+}
+
+.main-info {
+  height: 176px;
+}
+
+.test-animate {
+  animation-name: comer;
+  animation-duration: 500ms;
+}
+
+.test2-animate {
+  animation-name: comer;
+  animation-duration: 1000ms;
+}
+
+@keyframes comer {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.search-vidget {
+  background-color: $login-window-color;
+  width: 422px;
+  height: 35px;
+  position: relative;
+  left: 10px;
+  top: 10px;
+  box-shadow: $lf-box-shadow-btn-normal;
+  border-radius: $lf-border-radius;
+
+}
+
+.search-vidget-input {
+  height: 34px;
+  border: none;
+  width: 348px;
+  font-size: 14px;
+  line-height: 20px;
+  margin-left: 4px;
+  vertical-align: top;
+  padding: 4px 0 0 12px;
+}
+
+.search-vidget-button {
+  background-color: $btn-color;
+  width: 70px;
+  height: 35px;
+  display: inline-block;
+  cursor: pointer;
+  .icon-white {
+    fill: $login-window-color;
+    margin: 5.5px 23px;
+  }
+  &:hover {
+    .icon-white {
+      fill: $error-color;
+    }
+  }
+  &:active {
+    .icon-white {
+      fill: $error-color;
+    }
+  }
+}
+
+.search-vidget-close {
+  left: 326px;
+  top: 8px;
+  height: 20px;
+  position: absolute;
+  cursor: pointer;
+  z-index: 1004;
+  .search-close-icon {
+    fill: $table-text-head;
+  }
+  &:hover {
+    .search-close-icon {
+      fill: $btn-color;
+    }
+  }
+  &:active {
+    .search-close-icon {
+      fill: $btn-color;
+    }
+  }
+}
+
+.search-results-list {
+  background-color: $login-window-color;
+  width: 351px;
+  position: relative;
+  max-height: 790px;
+  overflow: scroll;
+}
+
+.search-result-item {
+  border-bottom: 1px solid $table-bg-hover;
+  padding: 8px 16px;
+  &:hover {
+    background-color: $table-bg-light;
+  }
+}
+
+.search-vidget-result {
+  position: relative;
+  top: 15px;
+  left: 10px;
+}
+
+.search-vidget-back {
+  width: 400px;
+  height: 35px;
+  background-color: #FFFFFF;
+  margin-bottom: 5px;
+  padding-left: 20px;
+  padding-top: 7px;
+}
+
+.search-vidget-settings {
+  position: relative;
+  background-color: #FFFFFF;
+  left: 10px;
+  top: 15px;
+  height: 35px;
+  padding: 5px;
+  margin-bottom: 10px;
+
+}
+
+.active-item {
+  color: $error-color;
+}
+
+//.select-new-link-wrap {
+//  padding: 10px;
+//
+//}
+
+.select-new-link {
+  cursor: pointer;
+  //border: 1px solid $primary-shade;
+  padding: 5px;
+  width: auto;
+  height: auto;
+  margin-top: 24px;
+  border-radius: 2px;
+  //margin: 10px;
+  &:hover {
+    background-color: $primary-shade;
+    p{
+      font-weight: 400;
+    }
+  }
+  &:checked{
+    p{
+      font-weight: 400;
+    }
+  }
+
+}
+.selected-link-type {
+  background-color: $primary-shade;
+}
+
+
+.events-controller {
+  //border: 1px solid black;
+  //width: 200px;
+  height: 300px;
+  width: auto;
+  //padding: 0 10px;
+}
+
+.chat-border {
+  border-bottom: 1px solid $primary-shade;
+}
+
+.chat-bg {
+  padding: 8px 4px;
+  background-color: $table-bg-light;
+  border-radius: 8px;
+}
+
+.chat {
+  margin-top: -4px;
+  margin-left: 10px;
+  background-color: $login-window-color;
+  position: relative;
+  border-radius: 2px;
+  box-shadow: $lf-box-shadow;
+  width: 410px;
+  height: 304px;
+  @include flex-box;
+  flex-direction: column;
+  z-index: 10000;
+  .chat-window-header {
+    @include flex-box;
+    height: auto;
+    background-color: $hover-light;
+    @include justify-content(space-between);
+    .chat-window-header-name {
+      padding: 4px 8px;
+      color: $lf-color;
+      height: auto;
+    }
+  }
+}
+
+.chat-headers-wrap {
+  @include flex-box;
+  flex-direction: column;
+  font-size: 12px;
+  margin: 4px 0;
+}
+
+.chat-wrap {
+  position: absolute;
+  left: 220px;
+  bottom: inherit;
+}
+
+.chat-header {
+  @include flex-box;
+  //border: 1px solid black;
+  @include justify-content(space-between);
+  //margin: 3px;
+  border-radius: 2px;
+  padding: 4px;
+  .chat-header-unreaded {
+    //border: 1px solid green;
+    border-radius: 100%;
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    background-color: $btn-color;
+    color: white;
+  }
+  &:hover {
+    background-color: $primary-shade;
+    box-shadow: $lf-box-shadow-btn-normal;
+    .chat-header-unreaded {
+      color: $primary-shade;
+
+    }
+  }
+
+}
+
+.chat-history {
+  width: 410px;
+  height: 210px;
+  flex: 1;
+  font-size: 12px;
+  line-height: 1.5;
+  padding-left: 4px;
+  word-wrap: break-word;
+  word-break: break-all;
+  //position: absolute;
+  overflow-y: auto;
+}
+
+.chat-input-wrap {
+  border-top: 1px solid $hover-light;
+  //height: 50px;
+  //flex:0 0 80px;
+  //bottom:0;
+  //left:0;
+  //@include flex-box;
+  padding: 0 8px;
+  .chat-window-text-area-input {
+
+    overflow-y: hidden;
+    height: 38px;
+    width: 400px;
+  }
+}
+
+
+// инпут
+.input-simple {
+  padding: 4px 0 8px 3px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: solid 1px #B6B6B6;
+  cursor: text;
+  font-size: 14px;
+  word-wrap: break-word;
+  margin-top: 6px;
+  margin-bottom: 2px;
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid #3F51B5;
+    transition: 0.15s cubic-bezier(.8, 0, 1, 1) all;
+  }
+  &:disabled {
+    border: none;
+    background-color: #ffffff;
+    padding-bottom: 9px;
+    cursor: auto;
+  }
+}
+
+// верхняя панель
+.up-panel {
+  @include flex-box;
+  width: 1280px;
+  height: 50px;
+  position: fixed;
+  background-color: #3F51B5;
+  padding-left: 24px;
+  padding-right: 24px;
+  -webkit-box-pack: justify;
+  @include justify-content(space-between);
+  @include align-items(center);
+  z-index: 999;
+
+  .user-profile-item {
+    cursor: pointer;
+      width: 200px;
+      color: white;
+    .user-profile-item-photo {
+      font-weight: 800;
+      padding: 3px;
+      border-radius: 100%;
+      border: 1px solid grey;
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+    }
+    .user-profile-item-name{
+      display: inline-block;
+      padding: 7px;
+    }
+    .user-profile-item-last-name{
+      display: inline-block;
+    }
+  }
+  .up-menu-item{
+    width: 100px;
+    .up-menu-item-link{
+      color: white;
+    }
+
+  }
+
+  .logo-name-wrap {
+    margin: 10px;
+    font-size: 24px;
+    .logo-name {
+      color: #FFFFFF;
+    }
+  }
+}
+
+
+/* channel textarea message */
+/* вынести в отдельный файл и соединить со стилями Ильи */
+.ta-message {
+  width: 100%;
+  border: none;
+  font-size: .9em;
+}
+.channel-textarea__actions {
+    padding: 9px 0 0 3px;
+}
+.channel-textarea__smiles {
+    padding-top: 10px;
+}
+.contact-center {
+    // position: fixed;
+    width: 210px;
+}
+
+.landing-enter{
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}

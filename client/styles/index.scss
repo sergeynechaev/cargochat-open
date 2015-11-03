@@ -1,0 +1,10 @@
+/** DEPRECATED
+  * use /scss/index.scss
+  * входной файл стилей проекта*/
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,100,700&subset=latin,cyrillic-ext);
+@import "variables";
+@import "mixins";
+@import "custom";
+@import "Controls";
+@import "Components";

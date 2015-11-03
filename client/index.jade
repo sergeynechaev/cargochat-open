@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    title Cargo.chat
+  body
+
+    //- 
+    //- Please notice the async attribute here. Since this template renders
+    //- everything in #react-root using React.js, it's safe to mark the script
+    //- tag "async". We don't need to handle FOUC content in this case.
+    //-
+    script(async src="http://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;load=package.full" type="text/javascript")
+    script(async type="text/javascript" src="#{assetsByChunkName.main}")

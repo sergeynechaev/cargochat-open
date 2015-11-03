@@ -1,0 +1,24 @@
+.Transport {
+
+/* Search Form */
+    &__EditForm {
+
+        &_Label {
+            width: 90px;
+            min-width: 90px;
+            line-height: 36px;
+        }
+    }
+
+    &__Temp {
+        &_InputUploadFile {
+            font-size: 13px;
+        }
+        &_InputUploadFile_Select {
+            font-weight: 400;
+            color: $link-color;
+            border-bottom: 1px $link-color dotted;
+            cursor: pointer;
+        }
+    }
+}

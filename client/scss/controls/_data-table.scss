@@ -1,0 +1,42 @@
+.data-table {
+	&__data {
+		@include flex-box;
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
+
+	&__filter {
+		margin-bottom: 12px;
+	}
+
+	&__filter-header {
+		@include flex-box;
+		@include flex-direction(row);
+		@include justify-content(space-between);
+		margin-bottom: 6px;
+	}
+
+	&__filter-print {
+		@include flex-box;
+		@include flex-direction(row);
+		> div {
+			margin-left: 10px;
+		}
+		&--title {
+			font-weight: $font-weight-strong;
+		}
+	}
+
+	&__filter-toggle {
+		color: $brand-primary;
+		border-bottom: 1px dotted;
+	}
+
+	&__footer {
+		@include flex-box;
+		@include flex-direction(row);
+		@include justify-content(flex-end);
+		@include align-items(center);
+	}
+}
+

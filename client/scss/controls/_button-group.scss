@@ -1,0 +1,40 @@
+.btn-group{
+	@include clearfix();
+	position: relative;
+
+	&.btn-group-row{
+		display: inline-block;
+	}
+
+	> .btn{
+		&[data-state=active]{
+			background: $brand-success;
+			border-color: $brand-success;
+			color: #fff;
+
+			&:hover{
+				background: lighten($brand-success, 5%);
+				border-color: lighten($brand-success, 5%);
+			}
+		}
+		&[data-state=disabled]{
+			color: $text-muted;
+			cursor: default;
+		}
+
+		margin: 0;
+		float: left;
+	}
+
+	.btn:last-child:not(:first-child){
+ 		@include border-left-radius(0);
+ 		border-left: 0;
+	}	
+	.btn:first-child:not(:last-child){
+  		@include border-right-radius(0);
+		border-right: 0;
+	}
+	.btn:not(:last-child):not(:first-child){
+		border-radius: 0;
+	}
+}

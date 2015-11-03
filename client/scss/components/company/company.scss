@@ -1,0 +1,113 @@
+#company-logo{
+	max-width: 100px;
+	max-height: 100px;
+}
+
+#company-logo-null{
+	width: 100px;
+	height: 100px;
+	background: $gray-light;
+}
+
+.company-logo-box{
+	display: inline-block;
+
+	& > #company-logo,
+	&__edit > #company-logo{
+		width: 100px;
+	}
+
+	&__edit{
+		position: relative;
+		cursor: pointer;
+		width: 100px;
+		height: 100px;
+
+		&:hover {
+			&:before, &:after{opacity: 1;}
+		}
+
+		&:before, &:after{
+			content: '';
+			position: absolute;
+			opacity: 0;
+
+			@include transition(opacity .1s ease-in-out);
+		}
+
+		&:before{
+			left: 0; bottom: 0; right: 0; top: 0;
+			background: rgba(0,0,0,0.1);
+		}
+
+		&:after{
+			content: 'Изменить';
+			left: 0; bottom: 0; right: 0;
+			background: rgba(0,0,0,0.6);
+			color: #fff;
+			text-align: center;
+			font-size: 12px;
+
+		}
+	}
+}
+
+.company-info{
+	&__map{
+		overflow: hidden;
+		margin: -10px -10px 20px;
+	}
+	&__contact{
+		padding-top: 20px;
+	}
+}
+
+.company-mini-card{
+	@include flex-box();
+
+	&__info{
+		padding-left: 20px;
+	}
+}
+
+.company-info-contacts{
+	&__item{
+		padding: 10px 0;
+		border-top: 1px solid $gray-light;
+	}
+}
+
+.relation-list{
+	list-style: none;
+
+	&__item{
+		position: relative;
+		padding: 10px 20px 10px 40px;
+		border: 1px solid $brand-default;
+		border-radius: 3px;
+		margin-bottom: 5px;
+		cursor: pointer;
+	}
+
+	&__item-icon{
+		position: absolute;
+		top: 50%; left: 11px;
+		margin-top: -11px;
+		fill: $brand-success;
+	}
+
+	&__item--current{
+		border-color: $brand-success;
+	}
+
+	&__item--create{
+		cursor: default;
+		opacity: 0.5;
+	}
+}
+
+.relation-form{
+	&__title{
+		margin-top: 30px;
+	}
+}

@@ -1,0 +1,115 @@
+.header{
+	position: fixed;
+	left: 0; top: 0; 
+	z-index: 999;
+	width: 100%;
+
+	@include transition(all .16s cubic-bezier(.32,1,.23,1));
+
+	&__logo{
+		display: block;
+		background: url('http://cargo.chat/static/logo-light.png') no-repeat;
+		width: 147px;
+		height: 38px;
+	}
+
+	&__container{
+		@include flex-box();
+		@include justify-content(space-between);
+		@include align-items(center);
+		@include transition(height 0.5s ease-out);
+
+		margin: 0 auto;
+		padding: 0 20px;
+		max-width: 1140px;
+		height: 100px;
+	}
+
+	.nav{
+		list-style: none;
+
+		&__item,
+		&__link{
+			display: inline-block;
+			cursor: pointer;
+		}
+
+		&__link{
+			position: relative;
+			padding: 41px 15px;
+			text-decoration: none;
+			background: transparent;
+			color: #fff;
+
+			@include transition(all .1s);
+
+			&:before{
+				content: '';
+				position: absolute;
+				left: 0; width: 100%;
+				top: -4px; height: 4px;
+				background: $brand-primary;
+
+				@include transition(top .1s);
+			}
+			
+			&:hover{ 
+				color: $brand-primary; 
+				&:before{ top: 0; }
+			}
+		}
+	}
+
+	&__btn{
+		margin-left: 20px;
+	}
+
+	&--small{
+		background: rgba(38, 50, 56, 0.9);
+
+		.header__container{ height: 60px; }
+		.nav__link{ padding: 21px 15px; }
+	}
+}
+
+@media (max-width: 48em) {
+	.header{
+		background: rgba(38, 50, 56, 1);
+
+		&__container{ height: 60px; }
+
+		.nav{
+			display: none;
+			position: absolute;
+			top: 60px; left: 0;
+			width: 100%;	
+
+			&__item,
+			&__link{ 
+				display: block; 
+			}
+
+			&__link{
+				background: #29353B;
+				padding: 21px 15px;
+				overflow: hidden;		
+
+				&:before{ display: none; }
+				&:hover{ background: #2C3A40; }
+			}
+
+			&--open{
+				display: block;
+			}
+		}
+
+		&__btn{
+			margin-left: 5px;
+			padding: 5px 10px;
+		
+			svg{
+				margin-bottom: -8px;
+			}
+		}
+	}
+}

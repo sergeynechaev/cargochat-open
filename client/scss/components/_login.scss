@@ -1,0 +1,85 @@
+.login-box{
+	position: relative;
+	width: 100%;
+	max-width: 400px;
+	margin: 85px auto;
+	background: #fff;
+	-webkit-backface-visibility: hidden;
+	
+
+	@include box-shadow(0 0 20px rgba(0, 0, 0, 0.2));
+
+	&__header{
+		padding: 20px 20px 10px;
+		h1{margin-bottom: 0;}
+	}
+
+	&__footer{
+		position: absolute;
+		left: 0; right: 0;
+		bottom: -30px;
+		text-align: center;
+
+		a{
+			color: $gray;
+			opacity: 0.7;
+		}
+	}
+
+	&__form{
+		padding: 10px 20px 20px;
+
+		.btn{
+			margin: 0;
+		}
+	}
+
+	&__social{
+		padding: 0 20px 20px;
+
+		.btn{
+			margin: 0;
+			width: 50%;
+		}
+	}
+
+	&__pass{
+		padding-right: 100px;
+	}
+
+	&__forgot-pass{
+		position: absolute;
+		bottom: 18px; right: 0;
+		border-radius: 3px;
+    	padding: 2px 5px;
+    	font-size: 12px;
+		background: $brand-default;
+		color: $gray;
+	}
+	
+	// Messages
+
+	&__info-msg,
+	&__error-msg{
+		padding: 10px 20px;
+		font-size: 13px;
+		color: #fff;
+	}
+
+	&__info-msg{
+		background: $brand-primary;
+	}
+
+	&__error-msg{
+		background: $brand-danger;
+	}
+
+	// Social button
+	.btn-social-facebook{
+		@include btn(#3b5998, #fff);
+	}
+
+	.btn-social-linkedin{
+		@include btn(#0177b5, #fff);	
+	}
+}

@@ -1,0 +1,28 @@
+.loading{
+	position: relative;
+	min-height: 200px;
+
+	&:after{
+		content: '';
+		position: absolute;
+		left: 50%; top: 50%;
+		margin: -15px 0 0 -15px;
+		height: 30px;
+		width: 30px;
+		border: 5px solid;
+		border-color: #62A8EA #9AC7F1 #BDDAF6 #E1EEFA;
+		border-radius: 50%;
+		
+		@include animation(preloader 0.8s infinite linear);
+	}
+}
+
+
+@-webkit-keyframes preloader {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+@keyframes preloader {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}

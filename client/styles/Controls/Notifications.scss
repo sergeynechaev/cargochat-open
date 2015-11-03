@@ -1,0 +1,162 @@
+/* Notifications: info, errors */
+
+.note-place {
+	z-index: 20000;
+	position: fixed;
+	/*right: 10px;*/
+	top: 60px;
+	/*width: 320px;*/
+	@include flex-box;
+	@include flex-direction(column);
+}
+
+.notify {
+	border-radius: 4px;
+    margin-bottom: 10px;
+    padding: 3px;
+  	box-shadow: $lf-box-shadow;
+    background-color: $login-window-color;
+ 	color: $lf-color;
+
+    &-window {
+		border-radius: 4px;
+	    padding: 8px 18px;
+	    font-size: 0.9em;
+
+	    & span {
+	    	font-weight: 500;
+	    }
+	}
+
+	&-error {
+	  background-color: lightcoral;
+	}
+
+	&-info {
+	  background-color: lightgreen;
+	}
+}
+
+
+/* NotificationCenter for messages */
+
+.NotificationCenter {
+	margin-left: 24px;
+}
+
+.NotificationArea {
+	@include flex-box;
+	@include flex-direction(column);
+	z-index: 20000;
+	position: absolute;
+	right: -16px;
+	top: 45px;
+	width: 300px;
+	background-color: #fff;
+  	box-shadow: $lf-box-shadow;
+  	border: 1px solid $link-color;
+    border-radius: 10px;
+    padding: 10px 15px;
+    overflow: none;
+
+    &__Container {
+    	overflow-y: auto;
+	    overflow-x: none;
+	    max-height: 400px;
+    }
+
+    &__Header {
+		padding: 0 0 12px 0;
+		margin-right: 10px;
+		@include flex-box;
+		@include flex-direction(row);
+		@include justify-content(space-between);
+		
+		&_clearAll {
+			border-bottom: 1px dotted;
+			color: $link-color;
+			cursor: pointer;
+			font-size: 0.8em;
+			font-weight: 400;
+		}
+    }
+}
+
+/* frame */
+.NotificationArea::before, .NotificationArea::after {
+    content: ''; 
+    position: absolute;
+    left: 236px; top: -20px;
+    border: 10px solid transparent;
+    border-bottom: 10px solid $link-color;
+}
+.NotificationArea::after {
+	border-bottom: 10px solid white;
+	top: -19px; 
+}
+
+
+.NotificationArea__Message {
+	@include flex-box;
+    @include justify-content(flex-start);
+    font-size: 0.9em;
+    margin: 2px 10px 6px 0;
+    border-top: 1px solid #ddd;
+    padding: 10px 0 0 0;
+
+	&_actionClose {
+		margin-right: 10px;
+		padding-top: 16px;
+	}
+
+	&_content {
+		@include flex-box;
+    	@include flex-direction(column);
+	}
+
+	&_title {
+		font-weight: 400;
+		color: $green;
+	}
+
+	&_title-event {
+		font-weight: 400;
+		color: $error-color;
+	}
+
+	&_user {
+		font-size: 1em;
+        color: $link-color;
+        /*border-bottom: 1px dotted;
+        cursor: pointer;*/
+        margin: 0;
+        padding: 0 0 2px 0;
+
+        & span {
+        	border-bottom: 1px dotted;
+        	cursor: pointer;
+        }
+	}
+
+	&_user-company {
+		font-size: 0.9em;
+        color: $btn-gray;
+	}
+	
+	&_body, &_descr {
+		padding: 6px 0 12px 0;
+		font-size: 0.9em;
+
+		& span {
+			color: #000;
+			cursor: pointer;
+		}
+	}
+}
+
+.Notification__NoEvents {
+	padding: 0 0 20px 0;
+	font-size: 0.9em;
+	text-align: center;
+}
+

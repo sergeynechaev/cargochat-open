@@ -1,0 +1,141 @@
+.profile-mini{
+	&__photo{
+		width: 40px;
+		height: 40px;
+		background: $gray-light;
+		overflow: hidden;
+		border-radius: 50%;
+		cursor: pointer;
+	}
+	&__drop{
+		position: absolute;
+		right: 0px; top: 55px; z-index: 10000;
+		width: 250px;
+		background-color: #fff;
+		text-align: right;
+	  	@include box-shadow(0 0 20px rgba(0, 0, 0, 0.2));
+
+	  	&:before{
+			content: ''; 
+	    	position: absolute;
+	    	right: 20px; top: -20px;
+	    	border: 10px solid transparent;
+			border-bottom: 10px solid white;
+		}
+
+		&-name,
+		&-info{
+			padding: 10px 15px;
+			border-bottom: 1px solid $gray-light;
+		}
+
+		&-name{
+			font-size: 16px;
+			color: $gray-dark;
+			p{
+				font-size: 14px;
+				color: $gray;
+				margin-bottom: 0;
+			}
+		}
+
+		&-footer{
+			padding: 10px 15px;
+		}
+	}
+}
+
+.social-account{
+	&__facebook,
+	&__linkedin{
+		padding: 10px 20px;
+	}
+
+	&__info{
+		padding: 10px 20px;
+	}
+
+	&__facebook{
+		background: #4A6DA7;
+		svg{
+			fill: #fff;
+		}
+	}
+
+	&__linkedin{
+		background: #0077B5;
+
+		svg{
+			fill: #fff;
+		}
+	}
+}
+
+// .profile-mini{
+// 	@include flex-box();
+// 	@include flex-direction(row-reverse);
+// 	@include align-items(center);
+
+// 	padding: 0 20px;
+
+// 	li{
+// 		list-style: none;
+// 		position: relative;
+// 	}
+
+// 	&__item,
+// 	&__item-photo{
+// 		background: $header-background;
+// 		cursor: pointer;
+
+// 		@include transition(background .2s linear);
+
+// 		&:hover{
+// 			background: lighten($header-background, 2%);
+// 		}
+// 	}
+
+// 	&__item{
+// 		padding: 20px 5px;
+// 	}
+
+// 	&__item-photo{
+// 		padding: 15px 10px;
+// 	}
+
+// 	&__photo{
+// 		width: 40px;
+// 		height: 40px;
+// 		background: $gray-light;
+// 		overflow: hidden;
+// 		border-radius: 50%;
+// 	}
+
+// 	&__icon{
+// 		fill: $gray;
+
+// 		&:hover{
+// 			fill: $gray;
+// 		}
+// 	}
+
+// 	/* dropdown */
+// 	&__dropdown{
+// 		position: absolute;
+// 		top: 70px; right: 0;
+
+// 		width: 250px;
+// 		background: #fff;
+// 		padding: 20px;
+
+// 		@include box-shadow(0 0 20px rgba(0, 0, 0, 0.2));
+
+// 		&:before{
+// 			content: '';
+// 			position: absolute;
+// 			right: 20px; top: -18px;
+// 			border: 10px solid transparent;	border-bottom: 10px solid #fff;
+// 		}
+// 	}
+
+// }

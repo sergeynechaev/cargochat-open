@@ -1,0 +1,67 @@
+.container,
+.container-fluid{
+	margin-right: auto;
+  	margin-left: auto;
+}
+
+.container{
+	max-width: 1140px;
+}
+
+.row {
+	@include flex-box();
+	@include flex(0 1 auto);
+	@include flex-direction(row);
+	@include flex-wrap(wrap);
+	@include align-items(center);
+	
+	&.row-nw { @include flex-wrap(nowrap); }
+
+	&.row-align-start { @include align-items(flex-start); }
+	&.row-align-end { @include align-items(flex-end); }
+
+	&.row-start { @include justify-content(flex-start); }
+	&.row-center { @include justify-content(center); }
+	&.row-end { @include justify-content(flex-end); }
+
+	&.row-around{
+		-webkit-justify-content: space-around;
+  		-ms-flex-pack: distribute;
+  		justify-content: space-around;
+	}
+	&.row-center{
+		-webkit-justify-content: center;
+		-ms-flex-pack: center;
+		-webkit-box-pack: justify;
+		justify-content: center;
+	}
+	&.row-between{
+		-webkit-justify-content: space-between;
+		-ms-flex-pack: justify;
+		-webkit-box-pack: justify;
+		justify-content: space-between;
+	}
+	&.row-no-padding > [class*="col"] {
+		padding: 0;
+	}
+	&.row-space-children {
+		> :not(:first-child) {
+	        margin-left: 20px;
+	    }
+	}
+	&.row-space-children-xs {
+		> :not(:first-child) {
+	        margin-left: 10px;
+	    }
+	}
+}
+
+.row.reverse {
+	@include flex-direction(row-reverse);
+}
+
+.col{
+	@include flex-direction(row);
+}
+
+@include create-grid-columns();

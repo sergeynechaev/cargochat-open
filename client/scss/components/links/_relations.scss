@@ -1,0 +1,17 @@
+.relation__new-link {
+    cursor: pointer;
+    padding: 5px 5px 5px 15px;
+    margin-bottom: 12px;
+    border-radius: 3px;
+
+    p { margin: 0;}
+    &:hover { background-color: $gray-light; }
+
+    &--selected {
+        background-color: $brand-success;
+        color: $color-invert;
+        &:hover {
+            background-color: $brand-success;
+        }
+    }
+}

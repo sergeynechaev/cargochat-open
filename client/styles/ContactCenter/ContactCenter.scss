@@ -1,0 +1,576 @@
+/**
+ * vars & mixins for cc
+ */
+$btn-add: #42bf89 !default;
+$font-invert: #fff;
+$gray-superlight: #dfe1e0;
+
+/* from _variables */
+$gray-dark:                 #526069 !default;
+$gray:                      #74848d !default;
+$gray-light:                #e9eaeb !default;
+$brand-success:             #42bf89 !default;
+$brand-danger:              #f96868 !default;
+$brand-warning:             #f2a654 !default;
+$brand-primary:             #62a8ea !default;
+$brand-default:             #e4eaec !default;
+
+.pointer {
+    cursor: pointer;
+}
+
+@mixin border-top-radius($radius) {
+  border-top-right-radius: $radius;
+   border-top-left-radius: $radius;
+}
+
+@mixin border-right-radius($radius) {
+  border-bottom-right-radius: $radius;
+     border-top-right-radius: $radius;
+}
+
+@mixin border-bottom-radius($radius) {
+  border-bottom-right-radius: $radius;
+   border-bottom-left-radius: $radius;
+}
+
+@mixin border-left-radius($radius) {
+  border-bottom-left-radius: $radius;
+     border-top-left-radius: $radius;
+}
+
+/**
+ * NEW CC
+ */
+
+.contact-center__block {
+    /*height: 100%; // remove to show visible block proportional*/
+    overflow-y: hidden;
+    @include flex-grow(5);
+
+    @include flex-box();
+    @include flex-direction(column);
+    @include flex-wrap(nowrap);
+
+    &[data-state=collapse] {
+        @include flex(0 0 40px);
+        height: initial;
+        overflow-y: hidden;
+    }
+
+    &-header {
+        min-height: 30px;
+        @include flex-box();
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include justify-content(space-between);
+        @include align-content(stretch);
+    }
+    &-header-title {
+        font-size: 16px;
+        border-bottom: 1px dotted;
+        margin: 4px;
+    }
+
+    &-subheader {
+        min-height: 30px;
+        @include flex-box();
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        // @include justify-content(space-between);
+        // @include align-content(stretch);
+    }
+
+    &-content {
+        overflow-y: auto;
+        @include flex-box();
+        @include flex-direction(column);
+        @include flex-wrap(nowrap);
+    }
+
+}
+
+.contact-center__tab {
+    text-align: center;
+    @include flex-box();
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include justify-content(space-between);
+    @include align-content(stretch);
+    @include align-items(center);
+    @include flex-grow(50);
+    margin: 0;
+    padding: 0;
+    /*width: 100%;*/
+
+    &-left, &-right {
+        border-top: 1px solid $gray-superlight;
+        border-bottom: 1px solid $gray-superlight;
+        @include flex-grow(1);
+        padding: 5px;
+    }
+    &-left {
+        border-left: 1px solid $gray-superlight;
+        @include border-left-radius(3px);
+    }
+    &-right {
+        border-right: 1px solid $gray-superlight;
+        @include border-right-radius(3px);
+    }
+    &-left[data-state=active], &-right[data-state=active] {
+        background-color: $brand-success;
+        color: $font-invert;
+    }
+}
+
+.contact-center__search {
+    @include flex-grow(1);
+    border: 1px solid $gray-superlight;
+    @include border-radius(3px);
+    @include flex-box();
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include align-items(center);
+    @include align-content(stretch);
+    @include justify-content(flex-start);
+    margin: 0 0 0 5px;
+    padding: 0 2px 0 5px;
+
+    & input {
+        width: 90%;
+        margin-left: 5px;
+        border: none;
+    }
+}
+
+.contact-center__elem {
+    padding: 10px;
+    font-size: 14px;
+    @include flex-box();
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include justify-content(space-between);
+    @include flex(1 0 auto);
+    border-bottom: 1px solid $gray-light;
+
+    &-left {
+        @include flex-box();
+        @include flex-direction(column);
+    }
+
+    &-right {
+        @include flex-box();
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include align-items(center);
+    }
+}
+
+.contact-center__user {
+    &-credits {
+        color: $gray-dark;
+        margin: 0 0 2px 0;
+    }
+    &-company {
+        font-size: 12px;
+        color: $gray;
+    }
+    &-notInContact{
+        @include flex-box;
+        @include justify-content(space-between);
+        font-size: 0.8em;
+        padding-top: 1px;
+    }
+    &-notInContact-text{
+        color: $error-color;
+    }
+    &-notInContact-action{
+        color: $green;
+        border-bottom: 1px dotted;
+        cursor: pointer;
+        margin-left: 8px;
+    }
+    &-unreaded {
+        color: $brand-success;
+    }
+    &-status {
+        margin: 0 0 0 5px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        &[data-state=offline] {
+            background-color: $gray-light;
+        }
+        &[data-state=online] {
+            background-color: $brand-success !important;
+        }
+    }
+    &-action {
+        margin-right: -5px;
+    }
+}
+
+.contact-center__channel{
+    &-title {
+        color: $gray-dark;
+        margin: 0 0 2px 0;
+    }
+    &-users {
+        font-size: 12px;
+        color: $gray;
+    }
+    &-unreaded {
+        color: $brand-success;
+    }
+    &-status {
+        margin: 0 0 0 5px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        &[data-state=invite] {
+            background-color: $brand-danger;
+        }
+    }
+}
+
+
+
+
+/*.contacts__status {
+    padding: 3px 8px 0 0;
+    & div[data-state=online], & div[data-state=offline] {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+    }
+    & div[data-state=offline] {
+        background-color: $btn-gray;
+    }
+    & div[data-state=online] {
+        background-color: $green !important;
+    }
+}
+
+.contacts__user-credits {
+    font-size: 1em;
+    color: $link-color;
+    margin: 0 0 4px 0;
+    a { border-bottom: 1px dotted; }
+}*/
+
+
+/**
+ * OLD
+ */
+
+.contact-center{
+    @include box-white-shadow();
+
+    &__box{
+        margin-bottom: 10px;
+        
+        &-content{
+            padding: 8px 0;
+            overflow-y: auto;
+            overflow-x: hidden; 
+        }
+
+        &-header{
+            background-color: $btn-color;
+        }
+        &-header-hidden{
+            background-color: #6D7AC7;
+        }
+        &-header, &-header-hidden{
+            @include flex-box;
+            @include justify-content(space-between);
+            padding: 8px 10px;
+            color: #fff;
+            /*cursor: pointer;*/
+            font-size: 1em;
+            box-shadow: $lf-box-shadow-btn-normal;
+           /* &:hover {
+                box-shadow: rgba(0, 0, 0, 0.3) 0 4px 4px 0;
+                -webkit-transition: all 0.2s ease;
+                -moz-transition: all 0.2s ease;
+                -o-transition: all 0.2s ease;
+                transition: all 0.2s ease;
+                background: rgba(80, 96, 185, 0.9);
+            }*/
+
+           /* button{
+                padding: 5px 10px;
+                border: 0;
+                cursor: pointer;
+                border: 1px solid #fff;
+                color: #fff;
+                background: $btn-color;
+    
+                &.active{
+                    background: #fff;
+                    color: #000;
+                }
+            }*/
+        }
+        &-subheader {
+            @include flex-box;
+            @include justify-content(space-between);
+            padding: 4px 10px 6px 10px;
+            font-size: 0.8em;
+        }
+        &-subheader-filter {
+            color: $link-color;
+            border-bottom: 1px dotted;
+            cursor: pointer;
+            padding: 0;
+            &--active {
+                color: $error-color;
+                font-weight: 400;
+            }
+        }
+        &-subheader-action {
+            color: $green;
+            border-bottom: 1px dotted;
+            cursor: pointer;
+            padding: 0;
+            font-weight: 400;
+            margin-left: 10px;
+        }
+
+    }
+
+    &__box-show, &__box-hide {
+        background: transparent;
+        padding: 0 20px 0 0;
+        position: relative;
+        color: #fff;
+        cursor: pointer;
+    }
+    &__box-show::after {
+        content: ''; 
+        position: absolute;
+        left: 0; 
+        bottom: 9px;
+        border: 7px solid transparent;
+        border-bottom: 7px solid #fff;
+    }
+    &__box-hide::after {
+        content: ''; 
+        position: absolute;
+        left: 0; 
+        bottom: -2px;
+        border: 7px solid transparent;
+        border-top: 7px solid #fff;
+    }
+    &__box-title {
+        padding: 2px 10px 0 0;
+        font-size: 15px;
+    }
+
+    &__inputSearch {
+        width: 70%;
+        padding: 0 4px;
+        margin-right: 10px;
+    }
+
+    .not_found{
+        font-size: 14px;
+        text-align: center;
+        padding: 10px;
+        color: $btn-gray;
+    }
+}
+
+.contacts{
+    &__contact{
+        @include flex-box;
+        @include justify-content(space-between);
+        font-size: 14px;
+        padding: 5px 10px;
+        border-bottom: $btn-gray;
+
+        &:nth-child(odd) {
+            background-color: #F5F5F5;
+        }
+
+        &-layout {
+            @include flex-box;
+            @include justify-content(space-between);
+        }
+
+        &-user{
+
+            &-credits{
+                font-size: 1em;
+                color: $link-color;
+                /*border-bottom: 1px dotted;
+                cursor: pointer;*/
+                margin: 0 0 4px 0;
+            }
+
+            &-company{
+                font-size: 0.9em;
+                color: $btn-gray;
+            }
+        }
+        
+        /* Online - Offline statuses */
+        &-status {
+            padding: 3px 8px 0 0;
+            &-icon, &-icon-active {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+            }
+            &-icon {
+                background-color: $btn-gray;
+            }
+            &-icon-active {
+                background-color: $green !important;
+            }
+        }
+    }
+}
+
+.channels{
+    &__channel{
+        @include flex-box;
+        @include justify-content(space-between);
+        font-size: 14px;
+        padding: 5px 10px;
+
+        &-left {
+            @include flex-box;
+            @include justify-content(flex-start);
+        }
+
+        &-right {
+
+        }
+
+        &:nth-child(odd) {
+            background-color: #F5F5F5;
+        }
+
+        &-info {
+            a {
+                border-bottom: 1px dotted;
+            }
+            p {
+                font-size: 0.9em;
+                color: $btn-gray;
+            }
+        }
+
+        &-unreader {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: $link-color;
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 0 0 4px;
+            margin-top: 1px;
+        }
+        
+        /* Online - Offline statuses */
+        &-status {
+            padding: 3px 8px 0 0;
+            &-icon-invite {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: $error-color;
+                color: #fff;
+                font-size: 10px;
+                padding: 1px 0 0 5px;
+            }
+            &-no-icon {
+                width: 12px;
+                height: 12px;
+            }
+        }
+    }
+}
+
+.chats{
+    &__chat{
+        @include flex-box;
+        @include justify-content(space-between);
+        font-size: 14px;
+        padding: 5px 10px;
+
+        &-left {
+            @include flex-box;
+            @include justify-content(flex-start);
+        }
+
+        &-right {
+
+        }
+
+        &:nth-child(odd) {
+            background-color: #F5F5F5;
+        }
+
+        &-user{
+            &-credits{
+                font-size: 1em;
+                color: $link-color;
+                /*border-bottom: 1px dotted;*/
+                /*cursor: pointer;*/
+                margin: 0 0 4px 0;
+                a { border-bottom: 1px dotted; }
+            }
+            &-company{
+                font-size: 0.9em;
+                color: $btn-gray;
+                padding-top: 1px;
+            }
+            &-notInContact{
+                @include flex-box;
+                @include justify-content(space-between);
+                font-size: 0.8em;
+                padding-top: 1px;
+            }
+            &-notInContact-text{
+                color: $error-color;
+            }
+            &-notInContact-action{
+                color: $green;
+                border-bottom: 1px dotted;
+                cursor: pointer;
+                margin-left: 8px;
+            }
+        }
+
+        &-unreader {
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: $link-color;
+            color: #fff;
+            font-size: 10px;
+            padding: 2px 0 0 4px;
+            margin-top: 1px;
+        }
+        
+        /* Online - Offline statuses */
+        &-status {
+            padding: 3px 8px 0 0;
+            &-icon-invite {
+                width: 12px;
+                height: 12px;
+                border-radius: 50%;
+                background-color: $error-color;
+                color: #fff;
+                font-size: 10px;
+                padding: 1px 0 0 5px;
+            }
+            &-no-icon {
+                width: 12px;
+                height: 12px;
+            }
+        }
+    }
+}

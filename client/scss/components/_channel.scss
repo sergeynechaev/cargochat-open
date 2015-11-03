@@ -1,0 +1,156 @@
+/* Channel and chat floating div */
+
+.channel-container {
+	position: fixed;
+    top: 70px;
+    left: 305px;
+    bottom: 20px;
+    z-index: 1000;
+    width: 500px;
+    background: #fff;
+    padding: 20px 0 20px 20px;
+    @include box-white-shadow();
+}
+
+.channel {
+	height: 100%;
+	@include flex-box();
+	@include flex-direction(column);
+	@include flex-wrap(nowrap);
+	@include justify-content(space-between);
+}
+
+.channel__preview {
+    @include flex-box();
+    @include flex-direction(column);
+    @include justify-content(flex-start);
+    width: 100%;
+
+    &-actions {
+        text-align: right;
+        padding: 0 30px 25px 0;
+    }
+    &-not-found, &-flags {
+        border: 1px solid $gray-light;
+        text-align: center;
+        margin: 0 30px 0 15px;
+        padding: 10px;
+    }
+    &-flags {
+        button { margin: 10px; }
+    }
+}
+
+.channel__header {
+    @include flex-box();
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include justify-content(space-between);
+    @include align-items(flex-start);
+    padding: 0 20px 0 0;
+    min-height: 50px;
+
+    &-title {
+        font-size: $font-size-h2;
+        color: $gray-dark;
+    }
+    &-actions, &-actions--admin {
+        @include flex-box();
+        @include flex-direction(row);
+        @include flex-wrap(nowrap);
+        @include align-items(baseline);
+        padding-top: 1px;
+    }
+}
+
+.channel__history {
+    width: 100%;
+    padding: 0 20px 0 0;
+    overflow-y: auto;
+
+    &-alert {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 75%;
+        padding: 5px 20px;
+        background-color: $brand-success;
+        color: #fff;
+        z-index: 1100;
+        border-radius: 0 5px 5px 0;
+
+        &-action {
+            font-weight: 400;
+            cursor: pointer;
+            border-bottom: 1px dotted;
+        }
+    }
+}
+
+.channel__sendarea {
+    min-height: 50px;
+    margin: 15px 20px 0 0;
+    border: 1px solid $gray-light;
+    @include flex-box();
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include justify-content(space-between);
+    @include align-items(stretch);
+
+    &-actions {
+        width: 40px;
+        text-align: center;
+        background-color: $color-message;
+        padding: 15px 0 0 0;
+    }
+    &-textarea {
+        padding: 5px;
+        width: 100%;
+
+        textarea{
+            border: none;
+            width: 100%;
+            min-height: 40px;
+            font-family: $font-family-base;
+            font-size: $font-size-base;
+            font-weight: $font-weight-base;
+            color: $gray-dark;
+            padding: 4px;
+            &:focus {
+                outline: none;
+            }
+        }
+    }
+    &-emoji {
+        width: 50px;
+        text-align: center;
+        background-color: $color-message;
+        padding: 15px 0 0 0;
+    }
+    &-emoji-open {
+        @include flex-box();
+        @include flex-direction(row);
+        @include box-white-shadow(3);
+        position: absolute;
+        bottom: 76px;
+        right: 20px;
+        max-width: 200px;
+        z-index: 1200;
+        border: 1px solid $gray;
+        background-color: #fff;
+        border-radius: 3px;
+        padding: 10px;
+    }
+    &-emoji-open::before, &-emoji-open::after {
+        content: ''; 
+        position: absolute;
+        right: 13px; 
+        bottom: -20px;
+        border: 10px solid transparent;
+        border-top: 10px solid $gray-dark;
+    }
+    &-emoji-open::after {
+        border-top: 10px solid white;
+        bottom: -19px; 
+    }
+}

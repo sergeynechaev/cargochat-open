@@ -1,0 +1,228 @@
+.orders__form {
+	width: 60%;
+	margin-left: 10px;
+	min-width: 725px;
+}
+
+.orders-list {
+	margin: 0 0 0 10px;
+
+	&__header {
+		margin-left: 10px;
+		@include flex-box();
+		@include justify-content(space-between);
+		@include align-items(baseline);
+	}
+	&__title {
+		font-size: $font-size-h1;
+		margin: 10px 0 10px 10px;
+	}
+	&__sort {
+		@include flex-box();
+		@include align-items(center);
+		@include flex-grow(5);
+		padding-left: 50px;
+		> span {
+			padding-right: 10px;
+		}
+	}
+
+	> table td:first-child {
+		padding-left: 10px !important;
+	}
+}
+
+.orders-table {
+	&__date {
+		font-size: $font-size-h2;
+		padding-top: 24px !important;
+	}
+	&__s-title {
+		font-weight: $font-weight-strong;
+		white-space: nowrap;
+		> a {
+			font-weight: $font-weight-light;
+		}
+	}
+	&__order-num {
+		font-size: $font-size-small;
+		font-weight: $font-weight-light;
+		color: $gray;
+		padding-right: 5px;
+	}
+	&__lp-name {
+		font-size: $font-size-h5;
+		color: $brand-primary;
+		font-weight: $font-weight-strong;
+	}
+	&__address {
+		font-size: $font-size-h5;
+		color: $gray-dark;
+		padding-top: 2px;
+	}
+	&__cargo {
+		/*font-size: $font-size-h5;*/
+		/*padding-top: 2px;*/
+	}
+	&__actions {
+		min-width: 250px;
+	}
+	&__actions-btn {
+		padding: 6px 0 10px 0;
+		white-space: nowrap;
+		> button {
+			margin-right: 10px;
+		}
+	}
+	&__actions-memo {
+		padding: 6px 0;
+	}
+	&__expeditor-price {
+		padding: 2px 0 0 0;
+		&-title { color: $brand-warning; /*text-decoration: underline;*/ }
+		&-accept { padding: 4px 0; }
+		&-value { 
+			font-weight: $font-weight-strong;
+			padding-right: 8px;
+			color: $brand-warning;
+		}
+	}
+	&__offer-price {
+		&-input {
+			@include flex-box();
+			@include flex-wrap(nowrap);
+			@include align-items(flex-end);
+			> span {
+				padding-right: 4px;
+			}
+			> input {
+				padding: 4px 0;
+			}
+		}
+		&-set {
+			padding: 8px 0 0 0;
+		}
+	}
+	&__offer-show, &__offer-hide {
+		font-weight: $font-weight-strong;
+		cursor: pointer;
+		border-bottom: 1px dotted;
+	}
+	&__offer-show {
+		color: $brand-primary;
+	}
+	&__offer-hide {
+		color: $brand-success;
+	}
+	&__offers-td {
+		border: 1px solid $table-tr-active;
+	}
+	&__offers-list {
+		width: 100%;
+		padding-right: 10px;
+		@include flex-box();
+		@include justify-content(flex-end);
+		> table td {
+			padding: 6px 12px !important;
+			background-color: #fafafa;
+		}
+	}
+	&__my-price {
+		color: $brand-success;
+		&-value {
+			color: $brand-success;
+			font-weight: $font-weight-strong;
+			padding-left: 5px;
+		}
+	}
+}
+
+.orders-popup-form {
+    @include flex-box();
+    @include flex-direction(column);
+    @include box-white-shadow(3);
+    position: absolute;
+    right: 30px;
+    min-width: 350px;
+    z-index: 2000;
+    border: 1px solid $gray;
+    background-color: #fff;
+    border-radius: 3px;
+    padding: 10px;
+
+    /*&[data-context=note] {
+        right: initial;
+        &::before, &::after {
+	        right: 80%;
+	    }
+    }*/
+
+    &[data-context=template] {
+        right: initial;
+        &::before, &::after {
+	        right: 75%;
+	   	}
+	}
+
+    &[data-context=offer] {
+        width: 400px;
+    }
+
+    &::before, &::after {
+        content: ''; 
+        position: absolute;
+        right: 50%; 
+        top: -20px;
+        border: 10px solid transparent;
+        border-bottom: 10px solid $gray-dark;
+    }
+    &::after {
+        border-bottom: 10px solid white;
+        top: -19px; 
+    }
+	&__make-offer {
+		padding: 10px;
+		input {
+			padding: 4px 0;
+		}
+	}
+	&__caller {
+		margin: 5px 0 10px 0;
+		font-weight: $font-weight-strong;
+		color: $brand-primary;
+		white-space: nowrap;
+	}
+}
+
+.orders-popup-form__tab {
+    text-align: center;
+    @include flex-box();
+    @include flex-direction(row);
+    @include flex-wrap(nowrap);
+    @include justify-content(space-between);
+    @include align-content(stretch);
+    @include align-items(center);
+    /*@include flex-grow(50);*/
+    margin: 0 0 10px 0;
+    padding: 0;
+
+    &-left, &-right {
+        border-top: 1px solid $gray-superlight;
+        border-bottom: 1px solid $gray-superlight;
+        @include flex-grow(1);
+        padding: 3px;
+        width: 50%;
+    }
+    &-left {
+        border-left: 1px solid $gray-superlight;
+        @include border-left-radius(3px);
+    }
+    &-right {
+        border-right: 1px solid $gray-superlight;
+        @include border-right-radius(3px);
+    }
+    &-left[data-state=active], &-right[data-state=active] {
+        background-color: $brand-success;
+        color: $color-invert;
+    }
+}

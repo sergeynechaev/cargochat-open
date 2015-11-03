@@ -1,0 +1,146 @@
+/* Grid Create */
+@function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+    $min: map-get($breakpoints, $name);
+    @return if($min != 0, $min, null);
+}
+
+@mixin media-breakpoint($name, $breakpoints: $grid-breakpoints){
+    $min: breakpoint-min($name, $breakpoints);
+
+    @if $min {
+        @media (min-width: $min) {
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+@mixin create-grid-columns($columns: $grid-columns, $breakpoints: $grid-breakpoints){
+    %grid-column {
+        @include flex(0 0 auto);
+        @include flex-grow(1);
+
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .col-first{ @include order(-1); }
+    .col-last{ @include order(1); }
+
+    @each $breakpoint in map-keys($breakpoints) {
+        @include media-breakpoint($breakpoint) {
+            .col-#{$breakpoint}{
+                @extend %grid-column;
+            }
+            @for $i from 1 through $columns {
+                $width: ( $i * (100 / $columns) ) + 0%;
+
+                .col-#{$breakpoint}-#{$i} {
+                    @include flex-basis($width);
+                    max-width: $width;
+                    @extend %grid-column;
+                }
+                .col-#{$breakpoint}-offset-#{$i}{
+                    margin-left: $width;
+                }
+            }
+            .middle-#{$breakpoint} {
+                @include align-items(center);
+            }
+        }
+    }
+}
+
+
+/* Borders and radius */
+@mixin border-top-radius($radius) {
+  border-top-right-radius: $radius;
+   border-top-left-radius: $radius;
+}
+@mixin border-right-radius($radius) {
+  border-bottom-right-radius: $radius;
+     border-top-right-radius: $radius;
+}
+@mixin border-bottom-radius($radius) {
+  border-bottom-right-radius: $radius;
+   border-bottom-left-radius: $radius;
+}
+@mixin border-left-radius($radius) {
+  border-bottom-left-radius: $radius;
+     border-top-left-radius: $radius;
+}
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+
+/* Shadows, animation, transitions */
+@mixin box-shadow($args...){
+    -webkit-box-shadow: $args;
+    -moz-box-shadow: $args;
+    -o-box-shadow: $args;
+    box-shadow: $args;
+}
+@mixin box-white-shadow($radius: 0) {
+  @if $radius != 0 {
+    border-radius: $radius;
+  }
+  background: #fff;
+  -webkit-box-shadow:0 1px 6px rgba(0,0,0,.25);
+          box-shadow:0 1px 6px rgba(0,0,0,.25);
+}
+@mixin animation($str) {
+    -webkit-animation: #{$str};
+    -moz-animation: #{$str};
+    -o-animation: #{$str};
+    animation: #{$str};
+}
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+@mixin transition-duration($args...) {
+    -webkit-transition-duration: $args;
+    -moz-transition-duration: $args;
+    -o-transition-duration: $args;
+    transition-duration: $args;
+}
+@mixin transform($val){
+    -webkit-transform: $val;
+    -moz-transform: $val;
+    -ms-transform: $val;
+    -o-transform: $val;
+    transform: $val;
+}
+@mixin transition-property($val){
+    -webkit-transition-property: -webkit-#{$val};
+    -moz-transition-property: -moz-#{$val};
+    transition-property: #{$val};
+}
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+/* Buttons */
+@mixin btn($bg, $color){
+    background: $bg;
+    color: $color;
+
+    &:hover{
+        background: lighten($bg, 5%);
+    }
+
+    &:active{
+        background: darken($bg, 5%);
+    }
+}
+@mixin btn-outline($val){
+    
+}

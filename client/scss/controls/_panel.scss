@@ -1,0 +1,22 @@
+.panel{
+	background: $panel-background;
+	border-radius: $panel-border-radius;
+
+	&__header{
+		@include flex-box();
+		padding: $panel-header-padding;
+	}
+
+	&__title{
+		margin-bottom: 0;
+	}
+
+	&__actions{
+		@include flex-grow(1);
+	}
+
+	&__body{
+		padding: $panel-body-padding;
+		min-height: $panel-body-min-height;
+	}
+}

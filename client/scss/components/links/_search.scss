@@ -1,0 +1,70 @@
+// .links-search{
+// 	position: relative;
+
+// 	&__map{
+// 		margin: -10px -20px;
+// 	}
+
+// 	&__container{
+// 		position: absolute;
+// 		width: 450px;
+// 		left: 0;
+// 		top: 20px;
+// 		z-index: 990;
+
+// 	}
+
+// 	&__search{
+// 			padding: 5px;
+// 			background: #fff;
+// 		}
+// }
+
+.links-search{
+	margin-top: 10px;
+	margin-bottom: 20px;
+
+	&__input{
+		padding: 15px 20px;
+		border: 1px solid #e4eaec;
+		border-radius: 3px;
+		font-size: 16px;
+	}
+}
+
+.company-card{
+	cursor: pointer;
+	padding: 20px;
+	border-radius: 3px;
+	margin: 10px 0;
+	border: 1px solid #e4eaec;
+
+	&:hover{
+		background: #FAFCFE;
+	}
+
+	&__header{
+		margin-bottom: 20px;
+		min-height: 57px;
+	}
+
+	&__tags{
+		margin: 10px 0;
+	    min-height: 19px;
+		.label{ margin-right: 5px; }
+	}
+
+	&__name{
+		font-size: 16px;
+		font-weight: 400;
+	}
+
+	&__addr{
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+
+		font-size: 13px;
+		color: $text-muted;
+	}
+}

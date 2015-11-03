@@ -1,0 +1,139 @@
+/* Адаптированные под новый дизайн старые Simple Components */
+
+/* InputSelect2 */
+.flex-greed {
+	@include flex-grow(5);
+}
+.select {
+  color: $brand-primary;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 24px;
+  vertical-align: middle;
+  text-align: right;
+  overflow: hidden;
+  /*width: 100%;*/
+  /*margin: 6px 0 0 -8px;*/
+}
+.select-list {
+  position: absolute;
+  /*box-shadow: 0px 1px 6px rgba(0,0,0,.4);*/
+  @include border-radius(3px);
+  border: 1px solid $gray;
+  max-height: 200px;
+  overflow-y: auto;
+  background-color: white;
+  padding: 0;
+  margin: 2px 0 0 0;
+  z-index: 2;
+}
+.select-item {
+  text-align: left;
+  padding: 2px 25px 2px 8px;
+  min-width: 120px;
+  border-bottom: 1px solid $gray-light;
+  color: $gray;
+  &:hover {
+    background-color: $brand-primary;
+    color: $color-invert;
+    transition: all linear 0.25s;
+  }
+}
+.selected {
+  height: 24px;
+  font-size: 14px;
+  line-height: 24px;
+  padding: 0 16px 0 8px;
+  &:hover {
+    background-color: $gray-light;
+    color: $brand-primary;
+    transition: all linear 0.25s;
+  }
+/*  & p {
+    font-weight: 500;
+    transition: all linear 0.25s;
+  }*/
+}
+.selected-ms {
+  font-size: 14px;
+  padding: 0 8px;
+  margin: 0 5px 0 0;
+  &:hover {
+    background-color: $brand-primary;
+    color: $color-invert;
+    transition: all linear 0.25s;
+    @include border-radius(3px);
+  }
+  & p {
+    font-weight: 500;
+    transition: all linear 0.25s;
+  }
+}
+.label {
+  color: $brand-primary;
+  font-size: 12px;
+  font-weight: 500;
+}
+.selected-tags {
+  font-size: 14px;
+}
+
+
+/* InputAddress */
+.addressList {
+  position: absolute;
+  z-index: 200;
+  width: 338px;
+  /*margin-left: 114px;*/
+  cursor: pointer;
+  @include border-radius(3px);
+  border: 1px solid $gray;
+  /*box-shadow: $lf-box-shadow-btn-normal;*/
+  > :nth-child(odd) {
+    background-color: $color-invert;
+    &:hover {
+      background-color: $brand-primary;
+      color: $color-invert;
+    }
+  }
+  > :nth-child(even) {
+    background-color: $color-invert;
+    &:hover {
+      background-color: $brand-primary;
+      color: $color-invert;
+    }
+  }
+}
+.addressListItem {
+  position: relative;
+  display: inline;
+  white-space: pre-wrap;
+  line-height: 1.5;
+  font-size: 13px;
+  padding: 8px;
+  border-bottom: 1px solid $gray-light;
+  &:hover {
+    transition: all linear 0.25s;
+    background-color: $brand-primary;
+    color: $color-invert;
+  }
+}
+.text-area {
+	font-size: $font-size-base;
+	min-height: 40px;
+	min-width: 350px;
+	color: $gray;
+	border: none;
+}
+.input-underline {
+  /*padding: 4px 0 8px 3px;*/
+  /*display: block;*/
+  /*width: 100%;*/
+  border: none;
+  border-bottom: 1px solid $gray-light;
+  cursor: text;
+  &:focus {
+    outline: none;
+    transition: 0.15s cubic-bezier(.8, 0, 1, 1) all;
+  }
+}

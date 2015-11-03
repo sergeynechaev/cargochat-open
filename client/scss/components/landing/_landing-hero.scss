@@ -1,0 +1,105 @@
+.hero{
+	width: 100%; height: 100%;
+
+	background: url('http://cargo.chat/static/landing/main_bg.jpg') center no-repeat;
+	background-size: cover;
+
+	&__container{
+		@include flex-box();
+		@include justify-content(center);
+		@include align-items(flex-start);
+		@include flex-direction(column);
+
+		position: relative;
+		margin: 0 auto;
+		padding: 100px 20px 200px;
+		max-width: 1140px;
+		width: 100%;
+		height: 100%;
+	}
+
+	&__title,
+	&__description,
+	&__controls{
+		width: 100%;
+		text-align: center;
+	}
+
+	&__title,
+	&__description{
+		color: #fff;
+		max-width: 650px;
+		margin: 0 auto;
+	}
+
+	&__title{
+		line-height: 2.688rem;
+		font-size: 2.500rem;
+		font-weight: 700;
+	}
+
+	&__description{
+		line-height: 1.563rem;
+		margin: 20px auto 40px;
+	}
+
+	&__images{
+		position: absolute;
+		left: 20px; right: 20px; bottom: 0;
+		text-align: center;
+
+		img{
+			vertical-align: middle;
+			max-width: 100%;
+		}
+	}
+
+	@-webkit-keyframes fadeInUpScreen {
+		from {
+			opacity: 0;
+			-webkit-transform: translate3d(0, 30px, 0);
+			transform: translate3d(0, 30px, 0);
+		}
+
+		to {
+			opacity: 1;
+			-webkit-transform: none;
+			transform: none;
+		}
+	}
+
+	@keyframes fadeInUpScreen {
+		from {
+			opacity: 0;
+			-webkit-transform: translate3d(0, 30px, 0);
+			transform: translate3d(0, 30px, 0);
+		}
+
+		to {
+			opacity: 1;
+			-webkit-transform: none;
+			transform: none;
+		}
+	}
+
+	&__screen{
+		-webkit-animation-duration: 1s;
+		animation-duration: 1s;
+		-webkit-animation-fill-mode: both;
+		animation-fill-mode: both;
+
+		-webkit-animation-name: fadeInUpScreen;
+  		animation-name: fadeInUpScreen;
+	}
+}
+
+@media (max-width: 48em) {
+	.hero{
+		&__container{
+			padding-bottom: 150px;
+		}
+		&__title{
+			font-size: 1.750rem;
+		}
+	}
+}

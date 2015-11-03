@@ -1,0 +1,39 @@
+.nav-tabs{
+	@include clearfix();
+	border-bottom: $panel-tabs-border;
+
+	&__item{
+		float: left;
+		list-style: none;
+		margin-right: 5px;
+		margin-bottom: -1px;
+		border-bottom: 2px solid transparent;
+		
+		@include transition(border-color .15s linear);
+		&:hover{ border-color: $gray; }
+
+		&[data-state=active]{
+			a{ color: $panel-tabs-active-color; }
+			border-color: $panel-tabs-active-color;
+		}
+
+		&[data-state=disabled]{
+			a{ color: $gray; cursor: default; }
+		}
+
+		a{
+			display: block;
+			padding: $panel-tabs-padding;
+			text-decoration: none;
+			color: $gray;
+			cursor: pointer;
+			@include transition(color .15s linear);
+
+		}
+
+	}
+}
+
+.nav-tabs--lower{
+	margin: -10px -10px 10px;
+}

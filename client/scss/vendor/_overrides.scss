@@ -1,0 +1,18 @@
+.datepicker__input {
+	@include border-radius(3px);
+    box-shadow: none;
+    border: 1px solid $gray-light;
+}
+.datepicker__input-container {
+    margin-top: 5px;
+}
+.datepicker__input:focus {
+  outline: none;
+  border-color: $brand-primary;
+  box-shadow: none;
+}
+.datepicker__day--today {
+    font-weight: $font-weight-strong;
+    border: 1px solid $brand-primary;
+    @include border-radius(3px);
+}

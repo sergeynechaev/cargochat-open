@@ -1,0 +1,69 @@
+@import "./ChannelInfo";
+@import "./ChannelMessage";
+@import "./ChannelHistory";
+@import "./ChannelPreview";
+
+.channel{
+	@include box-white-shadow();
+	@include flex-box;
+	@include flex-flow(row wrap);
+	@include align-items(stretch);
+	@include flex-basis(100%);
+	
+	&__header{
+		@include flex-box;
+		@include flex-flow(row wrap);
+		@include justify-content(space-between);
+		@include flex-basis(100%);
+		@include align-items(center);
+		padding: 10px 20px;
+
+		&_title {
+			font-size: 30px;
+		}
+		
+		&_actionsList {
+			@include flex-box;
+			@include flex-flow(row);
+			@include justify-content(flex-end);
+		}
+
+		&_actionsAdmin {
+			@include flex-box;
+			@include flex-flow(row);
+		}
+
+		&_actions {
+			@include flex-box;
+			@include flex-flow(row);
+		}
+	}
+
+	&__actions {
+		padding-left: 8px;
+
+		span {
+			color: $link-color;
+			border-bottom: 1px dotted;
+			cursor: pointer;
+			font-size: 0.9em;
+			font-weight: 400;
+		}
+	}
+
+	&__content,
+	&__sidebar{
+		/*min-height: 870px;*/
+	}
+
+	&__content{
+		@include flex-basis(75%);
+		position: relative;
+	}
+
+	&__sidebar{
+		@include flex-basis(25%);
+		padding: 10px 20px;
+	}
+}
+
